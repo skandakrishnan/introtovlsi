@@ -1,0 +1,60 @@
+* SPICE3 file created from dflipflop.ext - technology: scmos
+
+.option scale=0.09u
+.include MagicNames.txt
+
+
+Vdd vdd 0 dc 1.8
+VG1 clk 0 pulse(0 1.8 1000p 10p 10p 2400p 4800p)
+
+VG2 d 0 pulse(0 1.8 600p 10p 10p 800p 1000p)
+
+.global vdd gnd 
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd w_n16_15#
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+
+.ends
+
+.subckt invertor inv_vdd inv_vin inv_vout inv_gnd
+M1000 inv_vout inv_vin inv_gnd Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 inv_vout inv_vin inv_vdd inv_vdd pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+
+.ends
+
+.subckt tristate tri_vin tri_vout tri_clkp tri_clkn tri_vdd tri_gnd tri_int
+Xinvertor_0 tri_vdd tri_vin tri_int tri_gnd invertor
+Xtransgate_0 tri_clkp tri_int tri_clkn tri_vout tri_vdd tri_gnd tri_vdd transgate
+
+.ends
+
+
+* Top level circuit ff_try
+Xtransgate_1 clkn inv2_vout clk try2_vout vdd gnd vdd transgate
+Xtristate_0 inv2_vout tryst1_vout clkn clk vdd gnd tri1_int
++ tristate
+Xtristate_1 inv3_vout try2_vout clk clkn vdd gnd tri2_int
++ tristate
+Xinvertor_0 vdd clk clkn gnd invertor
+Xinvertor_1 vdd d inv1_vout gnd invertor
+Xinvertor_2 vdd tryst1_vout inv2_vout gnd invertor
+Xinvertor_3 vdd try2_vout inv3_vout gnd invertor
+Xinvertor_4 vdd inv3_vout qout gnd invertor
+Xtransgate_0 clk inv1_vout clkn tryst1_vout vdd gnd vdd transgate
+
+.tran 1p 2000p
+.measure tran i_int INTEG i(vdd) from=1000p to=1192p
+.measure tran period trig v(clk) val=0.9 rise=1 targ v(qout) val=0.9 rise=1
+.measure tran power param = '-1*(i_int*1.8)/(period)'
+
+.control
+run
+Plot clk qout d
+.endc
+.end
+

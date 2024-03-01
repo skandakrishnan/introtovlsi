@@ -1,0 +1,114 @@
+timestamp 1700704968
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use invertor invertor_4 1 0 415 0 1 9
+use tristate tristate_1 1 0 354 0 1 -15
+use invertor invertor_3 1 0 284 0 1 9
+use transgate transgate_1 1 0 257 0 1 9
+use tristate tristate_0 1 0 181 0 1 -15
+use invertor invertor_2 1 0 119 0 1 9
+use transgate transgate_0 1 0 92 0 1 9
+use invertor invertor_1 1 0 55 0 1 9
+use invertor invertor_0 1 0 6 0 1 9
+node "clk_inv" 0 0 21 17 m3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+equiv "clk_inv" "clk"
+node "m1_346_n22#" 1 6627 346 -22 m1 0 0 0 0 0 0 0 0 0 0 0 0 141 92 16 16 0 0
+node "m1_71_n15#" 0 5264 71 -15 v 0 0 0 0 0 0 0 0 0 0 0 0 112 64 16 16 0 0
+node "gnd" 4 133668 -28 0 m1 0 0 0 0 0 0 0 0 0 0 0 0 2844 960 0 0 0 0
+node "qout" 0 4512 422 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 96 56 0 0 0 0
+node "m1_330_19#" 1 8084 330 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 172 94 0 0 0 0
+node "inv3_vout" 2 11188 291 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 196 114 576 296 0 0
+node "try2_vout" 2 8612 264 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 180 106 708 362 0 0
+equiv "try2_vout" "trans2_vout"
+node "m1_157_19#" 1 8084 157 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 172 94 0 0 0 0
+node "inv2_vout" 2 13588 126 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 260 146 508 262 0 0
+node "inv1_vout" 0 6204 62 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 132 74 0 0 0 0
+node "m1_13_19#" 0 4700 13 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 112 48 16 16 0 0
+node "tryst1_vout" 2 8160 99 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 192 112 632 324 0 0
+equiv "tryst1_vout" "trans1_vout"
+node "d" 1 3259 -28 30 m1 0 0 0 0 0 0 0 0 0 0 0 0 140 86 430 210 0 0
+node "vdd" 3 0 -28 43 m1 0 0 0 0 0 0 0 0 0 0 0 0 3318 962 0 0 0 0
+node "m1_167_64#" 0 7144 167 64 v 0 0 0 0 0 0 0 0 0 0 0 0 152 84 16 16 0 0
+node "m1_242_64#" 1 7708 242 64 v 0 0 0 0 0 0 0 0 0 0 0 0 164 90 16 16 0 0
+node "clk" 9 161694 -28 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 3374 1572 348 182 0 0
+node "w_n28_24#" 42420 0 -28 24 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13272 1004
+cap "vdd" "w_n28_24#" 155946
+cap "d" "w_n28_24#" 6437
+cap "try2_vout" "w_n28_24#" 2888
+cap "tryst1_vout" "vdd" 20880
+cap "inv3_vout" "gnd" 19800
+cap "vdd" "clk" 1260
+cap "d" "clk" 720
+cap "gnd" "clk" 1080
+cap "inv2_vout" "gnd" 18180
+cap "tryst1_vout" "w_n28_24#" 3448
+cap "d" "vdd" 10530
+cap "w_n28_24#" "m1_13_19#" 564
+cap "w_n28_24#" "clk" 1292
+cap "vdd" "try2_vout" 23220
+subcap "gnd" -105844
+subcap "inv1_vout" -3008
+subcap "clk" -130968
+subcap "m1_157_19#" -3948
+subcap "inv2_vout" -1934
+subcap "m1_167_64#" -6251
+subcap "try2_vout" -5792
+subcap "m1_242_64#" -6956
+cap "transgate_1/w_n16_15#" "transgate_1/trans_vdd" -26649
+merge "tristate_1/tri_clkp" "tristate_0/tri_clkn" -13536 0 0 0 0 0 0 0 0 0 0 0 0 -288 -284 0 0 0 0
+merge "tristate_0/tri_clkn" "transgate_1/trans_clkn"
+merge "transgate_1/trans_clkn" "transgate_0/trans_clkp"
+merge "transgate_0/trans_clkp" "invertor_0/inv_vin"
+merge "invertor_0/inv_vin" "clk"
+merge "invertor_4/inv_gnd" "invertor_3/inv_gnd" -105186 0 0 0 0 0 0 0 0 0 0 0 0 -2238 -854 0 0 0 0
+merge "invertor_3/inv_gnd" "tristate_1/tri_gnd"
+merge "tristate_1/tri_gnd" "tristate_0/transgate_0/trans_gnd"
+merge "tristate_0/transgate_0/trans_gnd" "transgate_1/trans_gnd"
+merge "transgate_1/trans_gnd" "transgate_0/trans_gnd"
+merge "transgate_0/trans_gnd" "invertor_2/inv_gnd"
+merge "invertor_2/inv_gnd" "tristate_0/tri_gnd"
+merge "tristate_0/tri_gnd" "invertor_0/inv_gnd"
+merge "invertor_0/inv_gnd" "invertor_1/inv_gnd"
+merge "invertor_1/inv_gnd" "gnd"
+merge "transgate_1/trans_clkp" "m1_242_64#" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "invertor_0/inv_vout" "m1_13_19#" -2632 0 0 0 0 0 0 0 0 0 0 0 0 -56 -44 0 0 0 0
+merge "tristate_0/tri_int" "tristate_0/invertor_0/inv_vout" -8084 0 0 0 0 0 0 0 0 0 0 0 0 -172 -94 0 0 0 0
+merge "tristate_0/invertor_0/inv_vout" "m1_157_19#"
+merge "invertor_1/inv_vin" "d" -1880 0 0 0 0 0 0 0 0 0 0 0 0 -40 -28 0 0 0 0
+merge "invertor_4/inv_vin" "invertor_3/inv_vout" -7144 0 0 0 0 0 0 0 0 0 0 0 0 -152 -100 0 0 0 0
+merge "invertor_3/inv_vout" "tristate_1/tri_vin"
+merge "tristate_1/tri_vin" "inv3_vout"
+merge "tristate_1/w_n41_39#" "invertor_4/inv_vdd" 0 0 0 0 0 0 0 0 0 0 0 0 0 -2611 -872 0 0 -10444 -1250
+merge "invertor_4/inv_vdd" "invertor_3/inv_vdd"
+merge "invertor_3/inv_vdd" "tristate_1/tri_vdd"
+merge "tristate_1/tri_vdd" "tristate_0/transgate_0/trans_vdd"
+merge "tristate_0/transgate_0/trans_vdd" "tristate_0/w_n41_39#"
+merge "tristate_0/w_n41_39#" "transgate_1/trans_vdd"
+merge "transgate_1/trans_vdd" "transgate_1/w_n16_15#"
+merge "transgate_1/w_n16_15#" "transgate_0/trans_vdd"
+merge "transgate_0/trans_vdd" "transgate_0/w_n16_15#"
+merge "transgate_0/w_n16_15#" "invertor_2/inv_vdd"
+merge "invertor_2/inv_vdd" "tristate_0/tri_vdd"
+merge "tristate_0/tri_vdd" "invertor_0/inv_vdd"
+merge "invertor_0/inv_vdd" "invertor_1/inv_vdd"
+merge "invertor_1/inv_vdd" "w_n28_24#"
+merge "w_n28_24#" "vdd"
+merge "tristate_1/tri_vout" "invertor_3/inv_vin" -7896 0 0 0 0 0 0 0 0 0 0 0 0 -168 -108 0 0 0 0
+merge "invertor_3/inv_vin" "transgate_1/trans_vout"
+merge "transgate_1/trans_vout" "try2_vout"
+merge "tristate_0/tri_vout" "transgate_0/trans_vout" -7896 0 0 0 0 0 0 0 0 0 0 0 0 -168 -108 0 0 0 0
+merge "transgate_0/trans_vout" "invertor_2/inv_vin"
+merge "invertor_2/inv_vin" "tryst1_vout"
+merge "tristate_0/tri_clkp" "m1_167_64#" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "transgate_1/trans_vin" "invertor_2/inv_vout" -8836 0 0 0 0 0 0 0 0 0 0 0 0 -188 -118 0 0 0 0
+merge "invertor_2/inv_vout" "tristate_0/tri_vin"
+merge "tristate_0/tri_vin" "inv2_vout"
+merge "tristate_1/tri_int" "m1_330_19#" -8084 0 0 0 0 0 0 0 0 0 0 0 0 -172 -94 0 0 0 0
+merge "transgate_0/trans_clkn" "m1_71_n15#" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "tristate_1/tri_clkn" "m1_346_n22#" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "transgate_0/trans_vin" "invertor_1/inv_vout" -6204 0 0 0 0 0 0 0 0 0 0 0 0 -132 -82 0 0 0 0
+merge "invertor_1/inv_vout" "inv1_vout"
+merge "invertor_4/inv_vout" "qout" -2632 0 0 0 0 0 0 0 0 0 0 0 0 -56 -36 0 0 0 0

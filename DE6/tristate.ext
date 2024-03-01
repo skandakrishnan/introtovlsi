@@ -1,0 +1,36 @@
+timestamp 1700700052
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use transgate transgate_0 1 0 16 0 1 24
+use invertor invertor_0 1 0 -31 0 1 24
+port "tri_clkn" 4 21 -4 21 -4 m1
+port "tri_gnd" 6 -41 18 -41 18 m1
+port "tri_vout" 2 41 36 41 36 m1
+port "tri_vin" 1 -41 36 -41 36 m1
+port "tri_vdd" 5 -41 62 -41 62 m1
+port "tri_clkp" 3 21 84 21 84 m1
+node "tri_clkn" 0 1504 21 -4 m1 0 0 0 0 0 0 0 0 0 0 0 0 32 24 0 0 0 0
+node "tri_gnd" 1 23124 -41 18 m1 0 0 0 0 0 0 0 0 0 0 0 0 492 176 0 0 0 0
+node "tri_vout" 0 3384 41 36 m1 0 0 0 0 0 0 0 0 0 0 0 0 72 44 0 0 0 0
+node "tri_int" 1 8084 -24 34 m1 0 0 0 0 0 0 0 0 0 0 0 0 172 94 0 0 0 0
+node "tri_vin" 0 1880 -41 36 m1 0 0 0 0 0 0 0 0 0 0 0 0 40 28 0 0 0 0
+node "tri_vdd" 1 0 -41 62 m1 0 0 0 0 0 0 0 0 0 0 0 0 574 178 0 0 0 0
+node "tri_clkp" 0 1504 21 84 m1 0 0 0 0 0 0 0 0 0 0 0 0 32 24 0 0 0 0
+node "w_n41_39#" 7339 0 -41 39 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2296 220
+cap "tri_vdd" "w_n41_39#" 26978
+subcap "tri_gnd" -1504
+merge "transgate_0/trans_clkn" "tri_clkn" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "invertor_0/inv_vout" "transgate_0/trans_vin" -6204 0 0 0 0 0 0 0 0 0 0 0 0 -132 -82 0 0 0 0
+merge "transgate_0/trans_vin" "tri_int"
+merge "transgate_0/trans_clkp" "tri_clkp" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "invertor_0/inv_gnd" "transgate_0/trans_gnd" -18048 0 0 0 0 0 0 0 0 0 0 0 0 -384 -152 0 0 0 0
+merge "transgate_0/trans_gnd" "tri_gnd"
+merge "invertor_0/inv_vdd" "transgate_0/w_n16_15#" 0 0 0 0 0 0 0 0 0 0 0 0 0 -448 -156 0 0 -1792 -240
+merge "transgate_0/w_n16_15#" "w_n41_39#"
+merge "w_n41_39#" "transgate_0/trans_vdd"
+merge "transgate_0/trans_vdd" "tri_vdd"
+merge "transgate_0/trans_vout" "tri_vout" -2632 0 0 0 0 0 0 0 0 0 0 0 0 -56 -36 0 0 0 0
+merge "invertor_0/inv_vin" "tri_vin" -1128 0 0 0 0 0 0 0 0 0 0 0 0 -24 -20 0 0 0 0
