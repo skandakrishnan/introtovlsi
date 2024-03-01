@@ -1,0 +1,111 @@
+timestamp 1701972901
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use fa fa_3 1 0 2432 0 1 -469
+use fa fa_2 1 0 1602 0 1 -299
+use fa fa_1 1 0 770 0 1 -132
+use fa fa_0 1 0 -64 0 1 32
+port "ri_cout" 16 3308 -509 3308 -509 m1
+port "ri_b3" 14 2474 -486 2474 -486 m1
+port "ri_sout3" 15 3847 -446 3847 -446 m1
+port "ri_a3" 13 2474 -446 2474 -446 m1
+port "ri_b2" 11 1644 -316 1644 -316 m1
+port "ri_sout2" 12 3019 -276 3019 -276 m1
+port "ri_a2" 10 1647 -276 1647 -276 m1
+port "ri_b1" 8 825 -149 825 -149 m1
+port "ri_sout1" 9 2184 -109 2184 -109 m1
+port "ri_a1" 7 824 -109 824 -109 m1
+port "ri_b0" 5 -24 15 -24 15 m1
+port "fa_four_gnd" 2 -23 36 -23 36 m1
+port "ri_sout0" 6 1344 55 1344 55 m1
+port "ri_a0" 4 -24 55 -24 55 m1
+port "ri_c0" 3 -24 65 -24 65 m1
+port "fa_four_vdd" 1 -24 84 -24 84 m1
+node "ri_cout" 0 2820 3308 -509 m1 0 0 0 0 0 0 0 0 0 0 0 0 60 32 0 0 0 0
+node "ri_b3" 1 8648 2474 -486 m1 0 0 0 0 0 0 0 0 0 0 0 0 184 100 0 0 0 0
+node "ri_sout3" 0 11985 3847 -446 m1 0 0 0 0 0 0 0 0 0 0 0 0 255 112 0 0 0 0
+node "ri_a3" 0 5828 2474 -446 m1 0 0 0 0 0 0 0 0 0 0 0 0 124 70 0 0 0 0
+node "ri_c3" 2 30456 2477 -438 m1 0 0 0 0 0 0 0 0 0 0 0 0 648 332 0 0 0 0
+node "m1_2266_n469#" 4 119709 2266 -469 m1 0 0 0 0 0 0 0 0 0 0 0 0 2547 870 0 0 0 0
+node "ri_b2" 1 7708 1644 -316 m1 0 0 0 0 0 0 0 0 0 0 0 0 164 90 0 0 0 0
+node "ri_sout2" 0 10340 3019 -276 m1 0 0 0 0 0 0 0 0 0 0 0 0 220 98 0 0 0 0
+node "ri_a2" 0 5452 1647 -276 m1 0 0 0 0 0 0 0 0 0 0 0 0 116 66 0 0 0 0
+node "m1_2913_n253#" 4 177472 2913 -253 m1 0 0 0 0 0 0 0 0 0 0 0 0 3776 1128 0 0 0 0
+node "ri_c2" 2 28764 1645 -268 m1 0 0 0 0 0 0 0 0 0 0 0 0 612 314 0 0 0 0
+node "m1_1440_n302#" 3 124832 1440 -302 m1 0 0 0 0 0 0 0 0 0 0 0 0 2656 870 0 0 0 0
+node "ri_b1" 0 3760 825 -149 m1 0 0 0 0 0 0 0 0 0 0 0 0 80 48 0 0 0 0
+node "ri_sout1" 1 12220 2184 -109 m1 0 0 0 0 0 0 0 0 0 0 0 0 260 114 0 0 0 0
+node "ri_a1" 0 3948 824 -109 m1 0 0 0 0 0 0 0 0 0 0 0 0 84 50 0 0 0 0
+node "m1_2150_n86#" 4 150588 2150 -86 m1 0 0 0 0 0 0 0 0 0 0 0 0 3204 982 0 0 0 0
+node "ri_c1" 2 26132 811 -101 m1 0 0 0 0 0 0 0 0 0 0 0 0 556 286 0 0 0 0
+node "m1_599_n132#" 4 138180 599 -132 m1 0 0 0 0 0 0 0 0 0 0 0 0 2940 950 0 0 0 0
+node "ri_b0" 0 7332 -24 15 m1 0 0 0 0 0 0 0 0 0 0 0 0 156 86 0 0 0 0
+node "fa_four_gnd" 0 12173 -23 36 m1 0 0 0 0 0 0 0 0 0 0 0 0 259 88 0 0 0 0
+node "ri_sout0" 1 15275 1344 55 m1 0 0 0 0 0 0 0 0 0 0 0 0 325 140 0 0 0 0
+node "ri_a0" 0 6016 -24 55 m1 0 0 0 0 0 0 0 0 0 0 0 0 128 72 0 0 0 0
+node "ri_c0" 0 6016 -24 65 m1 0 0 0 0 0 0 0 0 0 0 0 0 128 72 0 0 0 0
+node "m1_1326_78#" 3 124832 1326 78 m1 0 0 0 0 0 0 0 0 0 0 0 0 2656 842 0 0 0 0
+node "fa_four_vdd" 0 9588 -24 84 m1 0 0 0 0 0 0 0 0 0 0 0 0 204 80 0 0 0 0
+cap "fa_3/carry_0/carryvdd" "fa_3/w_863_27#" 188
+subcap "ri_b2" -1692
+cap "fa_2/m2_513_n19#" "m1_2266_n469#" 720
+cap "fa_2/m2_513_n19#" "fa_2/fa_cout" 360
+cap "m1_2913_n253#" "fa_3/m1_935_64#" 720
+cap "m1_2913_n253#" "fa_3/fa_cin" 720
+cap "fa_2/carry_0/carryvdd" "fa_2/w_863_27#" 188
+cap "fa_2/m1_935_64#" "fa_2/carry_0/carryvdd" 720
+cap "fa_2/carry_0/carryvdd" "fa_2/fa_cin" 720
+subcap "m1_2913_n253#" -177472
+cap "fa_1/carry_0/carrygnd" "fa_1/m2_513_n19#" 900
+subcap "ri_a1" -1880
+cap "fa_1/carry_0/w_n16_27#" "fa_1/carry_0/carryvdd" 188
+cap "fa_1/m1_935_64#" "fa_1/carry_0/carryvdd" 720
+cap "fa_1/carry_0/carryvdd" "fa_1/fa_cin" 720
+subcap "m1_2150_n86#" -150212
+subcap "ri_c0" -564
+subcap "fa_four_vdd" -1410
+cap "fa_0/m2_513_n19#" "fa_0/carry_0/carrygnd" 900
+subcap "m1_1326_78#" -118440
+merge "fa_2/m1_1373_46#" "fa_2/sum_0/xor_1/transgate_1/trans_vdd" -36848 0 0 0 0 0 0 0 0 0 0 0 0 -780 -258 0 0 0 0
+merge "fa_2/sum_0/xor_1/transgate_1/trans_vdd" "fa_3/carry_0/carryvdd"
+merge "fa_3/carry_0/carryvdd" "m1_2913_n253#"
+merge "fa_1/carry_0/carrygnd" "fa_2/carry_0/carrygnd" -14523 0 0 0 0 0 0 0 0 0 0 0 0 -309 -154 0 0 0 0
+merge "fa_2/carry_0/carrygnd" "fa_2/fa_gnd"
+merge "fa_2/fa_gnd" "m1_1440_n302#"
+merge "m1_1440_n302#" "fa_3/fa_gnd"
+merge "fa_3/fa_gnd" "m1_2266_n469#"
+merge "fa_1/fa_cout" "fa_2/carry_0/carrycin" -5076 0 0 0 0 0 0 0 0 0 0 0 0 -108 -70 0 0 0 0
+merge "fa_2/carry_0/carrycin" "fa_2/fa_cin"
+merge "fa_2/fa_cin" "ri_c2"
+merge "fa_0/fa_cin" "ri_c0" -564 0 0 0 0 0 0 0 0 0 0 0 0 -12 -14 0 0 0 0
+merge "fa_0/fa_vdd" "fa_four_vdd" -1410 0 0 0 0 0 0 0 0 0 0 0 0 -30 -22 0 0 0 0
+merge "fa_0/fa_sout" "ri_sout0" -11280 0 0 0 0 0 0 0 0 0 0 0 0 -240 -106 0 0 0 0
+merge "fa_0/fa_ain" "ri_a0" -564 0 0 0 0 0 0 0 0 0 0 0 0 -12 -14 0 0 0 0
+merge "fa_3/fa_bin" "ri_b3" -3384 0 0 0 0 0 0 0 0 0 0 0 0 -72 -44 0 0 0 0
+merge "fa_1/fa_sout" "ri_sout1" -6815 0 0 0 0 0 0 0 0 0 0 0 0 -145 -68 0 0 0 0
+merge "fa_2/fa_sout" "fa_2/sum_0/xor_1/xorvout" -4230 0 0 0 0 0 0 0 0 0 0 0 0 -90 -46 0 0 0 0
+merge "fa_2/sum_0/xor_1/xorvout" "ri_sout2"
+merge "fa_1/sum_0/xor_1/xorvdd" "fa_2/carry_0/carryvdd" -5452 0 0 0 0 0 0 0 0 0 0 0 0 -112 -58 0 0 0 0
+merge "fa_2/carry_0/carryvdd" "m1_2150_n86#"
+merge "fa_0/sum_0/xor_1/xorvdd" "fa_1/carry_0/carryvdd" -1692 0 0 0 0 0 0 0 0 0 0 0 0 -32 -44 0 0 0 0
+merge "fa_1/carry_0/carryvdd" "m1_1326_78#"
+merge "fa_0/fa_cout" "fa_1/fa_cin" -2632 0 0 0 0 0 0 0 0 0 0 0 0 -56 -44 0 0 0 0
+merge "fa_1/fa_cin" "ri_c1"
+merge "fa_0/carry_0/carrygnd" "fa_1/carry_0/and_0/nand_two_0/gnd" -21056 0 0 0 0 0 0 0 0 0 0 0 0 -448 -156 0 0 0 0
+merge "fa_1/carry_0/and_0/nand_two_0/gnd" "fa_1/fa_gnd"
+merge "fa_1/fa_gnd" "m1_599_n132#"
+merge "fa_3/fa_sout" "ri_sout3" -6345 0 0 0 0 0 0 0 0 0 0 0 0 -135 -64 0 0 0 0
+merge "fa_1/fa_ain" "ri_a1" -1128 0 0 0 0 0 0 0 0 0 0 0 0 -24 -20 0 0 0 0
+merge "fa_2/carry_0/carryain" "fa_2/fa_ain" -940 0 0 0 0 0 0 0 0 0 0 0 0 -20 -22 0 0 0 0
+merge "fa_2/fa_ain" "ri_a2"
+merge "fa_0/fa_gnd" "fa_four_gnd" -2632 0 0 0 0 0 0 0 0 0 0 0 0 -56 -30 0 0 0 0
+merge "fa_3/fa_cout" "ri_cout" -564 0 0 0 0 0 0 0 0 0 0 0 0 -12 -16 0 0 0 0
+merge "fa_0/fa_bin" "ri_b0" -1692 0 0 0 0 0 0 0 0 0 0 0 0 -36 -26 0 0 0 0
+merge "fa_1/fa_bin" "ri_b1" -940 0 0 0 0 0 0 0 0 0 0 0 0 -20 -18 0 0 0 0
+merge "fa_2/fa_cout" "fa_3/fa_cin" -5452 0 0 0 0 0 0 0 0 0 0 0 0 -116 -74 0 0 0 0
+merge "fa_3/fa_cin" "ri_c3"
+merge "fa_2/fa_bin" "ri_b2" -2444 0 0 0 0 0 0 0 0 0 0 0 0 -52 -34 0 0 0 0
+merge "fa_3/fa_ain" "ri_a3" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0

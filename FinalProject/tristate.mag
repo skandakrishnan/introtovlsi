@@ -1,0 +1,36 @@
+magic
+tech scmos
+timestamp 1700700052
+<< nwell >>
+rect -41 39 41 67
+<< metal1 >>
+rect 19 76 23 84
+rect -41 58 41 65
+rect -41 34 -31 38
+rect -24 34 19 38
+rect 23 34 41 38
+rect -41 15 41 21
+rect 19 -4 23 4
+use invertor  invertor_0 /home/skanda
+timestamp 1699568183
+transform 1 0 -31 0 1 24
+box -6 -9 21 43
+use transgate  transgate_0 /home/skanda
+timestamp 1700697364
+transform 1 0 16 0 1 24
+box -16 -24 21 56
+<< labels >>
+rlabel metal1 41 36 41 36 7 tri_vout
+port 2 w
+rlabel metal1 -41 36 -41 36 3 tri_vin
+port 1 e
+rlabel metal1 -41 62 -41 62 3 tri_vdd
+port 5 e
+rlabel metal1 -4 36 -4 36 1 tri_int
+rlabel metal1 21 84 21 84 5 tri_clkp
+port 3 s
+rlabel metal1 21 -4 21 -4 1 tri_clkn
+port 4 n
+rlabel metal1 -41 18 -41 18 3 tri_gnd
+port 6 e
+<< end >>

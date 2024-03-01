@@ -1,0 +1,49 @@
+* SPICE3 file created from xor.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd w_n16_15#
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 trans_clkp w_n16_15# 4.53fF
+C1 trans_vdd w_n16_15# 11.52fF
+C2 trans_gnd Gnd 9.12fF
+C3 trans_clkn Gnd 7.46fF
+C4 trans_vout Gnd 3.95fF
+C5 trans_vin Gnd 4.89fF
+C6 trans_clkp Gnd 3.89fF
+.ends
+
+.subckt invertor inv_vdd inv_vin inv_vout inv_gnd
+M1000 inv_vout inv_vin inv_gnd Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 inv_vout inv_vin inv_vdd inv_vdd pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 inv_vdd inv_vin 2.15fF
+C1 inv_gnd Gnd 4.00fF
+C2 inv_vout Gnd 3.95fF
+C3 inv_vin Gnd 5.97fF
+.ends
+
+.subckt xor xora xorb xorvout xorvdd xorgnd
+Xtransgate_1 invbout invaout xorb xorvout xorvdd xorgnd xorvdd transgate
+Xinvertor_0 xorvdd xorb invbout xorgnd invertor
+Xinvertor_1 xorvdd xora invaout xorgnd invertor
+Xtransgate_0 xorb xora invbout xorvout xorvdd xorgnd xorvdd transgate
+C0 xorvdd xorb 3.47fF
+C1 xora xorgnd 2.16fF
+C2 invbout xorvdd 3.02fF
+C3 xorvout xorvdd 5.92fF
+C4 xorgnd 0 24.44fF
+C5 xorvout 0 21.02fF
+C6 xora 0 11.23fF
+C7 xorb 0 42.92fF
+C8 invaout 0 6.20fF
+C9 invbout 0 16.76fF
+C10 xorvdd 0 4.89fF
+.ends
+

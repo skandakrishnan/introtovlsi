@@ -1,0 +1,155 @@
+* SPICE3 file created from clk_cra.ext - technology: scmos
+
+
+.option scale=0.09u
+.include MagicNames.txt
+
+.global vdd gnd 
+
+
+Vdd vdd 0 dc 1.8
+
+va0 in_a0 0 pulse(0 1.8 1000p 10p 10p 10000p 20000p)
+va1 in_a1 0 pulse(0 1.8 1000p 10p 10p 10000p 20000p)
+va2 in_a2 0 pulse(0 1.8 1000p 10p 10p 10000p 20000p)
+va3 in_a3 0 pulse(0 1.8 1000p 10p 10p 10000p 20000p)
+
+vb0 in_b0 0 pulse(0 0 1000p 10p 10p 10000p 20000p)
+vb1 in_b1 0 pulse(0 0 1000p 10p 10p 10000p 20000p)
+vb2 in_b2 0 pulse(0 0 1000p 10p 10p 10000p 20000p)
+vb3 in_b3 0 pulse(0 0 1000p 10p 10p 10000p 20000p)
+
+vc0 in_cin 0 pulse(0 1.8 1000p 10p 10p 10000p 20000p)
+
+vclk clk 0 pulse(0 1.8 1200p 10p 10p 1355p 2710p)
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd w_n16_15#
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+
+.ends
+
+.subckt invertor inv_vdd inv_vin inv_vout inv_gnd
+M1000 inv_vout inv_vin inv_gnd Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 inv_vout inv_vin inv_vdd inv_vdd pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+
+.ends
+
+.subckt tristate tri_vin tri_vout tri_clkp tri_clkn tri_vdd tri_gnd tri_int
+Xinvertor_0 tri_vdd tri_vin tri_int tri_gnd invertor
+Xtransgate_0 tri_clkp tri_int tri_clkn tri_vout tri_vdd tri_gnd tri_vdd transgate
+
+.ends
+
+.subckt ff ff_clk ff_din ff_qout ff_vdd ff_gnd
+Xtransgate_1 clkn inv2_vout ff_clk try2_vout ff_vdd ff_gnd ff_vdd transgate
+Xtristate_0 inv2_vout tryst1_vout clkn ff_clk ff_vdd ff_gnd triint0 tristate
+Xtristate_1 inv3_vout try2_vout ff_clk clkn ff_vdd ff_gnd triint1 tristate
+Xinvertor_0 ff_vdd ff_clk clkn ff_gnd invertor
+Xinvertor_1 ff_vdd ff_din inv1_vout ff_gnd invertor
+Xinvertor_2 ff_vdd tryst1_vout inv2_vout ff_gnd invertor
+Xinvertor_4 ff_vdd inv3_vout ff_qout ff_gnd invertor
+Xinvertor_3 ff_vdd try2_vout inv3_vout ff_gnd invertor
+Xtransgate_0 ff_clk inv1_vout clkn tryst1_vout ff_vdd ff_gnd ff_vdd transgate
+
+.ends
+
+.subckt nand_two out inA inB gnd vdd
+M1000 vdd inB out vdd pfet w=8 l=2
++  ad=112 pd=60 as=80 ps=36
+M1001 out inB a_n10_n7# Gnd nfet w=8 l=2
++  ad=56 pd=30 as=80 ps=36
+M1002 out inA vdd vdd pfet w=8 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_n10_n7# inA gnd Gnd nfet w=8 l=2
++  ad=0 pd=0 as=56 ps=30
+
+.ends
+
+.subckt or orain orbin orout orvdd orgnd
+Xnand_two_0 nand0out orain orain orgnd orvdd nand_two
+Xnand_two_2 orout nand1out nand0out orgnd orvdd nand_two
+Xnand_two_1 nand1out orbin orbin orgnd orvdd nand_two
+
+.ends
+
+.subckt and anda andb andvout andvdd andgnd
+Xnand_two_0 nandout anda andb andgnd andvdd nand_two
+Xnand_two_1 andvout nandout nandout andgnd andvdd nand_two
+
+.ends
+
+.subckt carry carryain carrybin carrycin carryout carryvdd carrygnd
+Xor_0 and1out and0out or0out carryvdd carrygnd or
+Xor_1 and2out or0out carryout carryvdd carrygnd or
+Xand_0 carryain carrycin and0out carryvdd carrygnd and
+Xand_1 carrybin carrycin and1out carryvdd carrygnd and
+Xand_2 carrybin carryain and2out carryvdd carrygnd and
+
+.ends
+
+.subckt xor xora xorb xorvout xorvdd xorgnd
+Xtransgate_1 invbout invaout xorb xorvout xorvdd xorgnd xorvdd transgate
+Xinvertor_0 xorvdd xorb invbout xorgnd invertor
+Xinvertor_1 xorvdd xora invaout xorgnd invertor
+Xtransgate_0 xorb xora invbout xorvout xorvdd xorgnd xorvdd transgate
+
+.ends
+
+.subckt sum sumain sumbin sumcin sumvout sumvdd sumgnd
+Xxor_0 sumain sumbin xor1out sumvdd sumgnd xor
+Xxor_1 xor1out sumcin sumvout sumvdd sumgnd xor
+
+.ends
+
+.subckt fa fa_ain fa_bin fa_cin fa_sout fa_cout fa_vdd fa_gnd
+Xcarry_0 fa_ain fa_bin fa_cin fa_cout fa_vdd fa_gnd carry
+Xsum_0 fa_bin fa_ain fa_cin fa_sout fa_vdd fa_gnd sum
+
+.ends
+
+.subckt ripple fa_four_vdd fa_four_gnd ri_c0 ri_a0 ri_b0 ri_sout0 ri_a1 ri_b1 ri_sout1
++ ri_a2 ri_b2 ri_sout2 ri_a3 ri_b3 ri_sout3 ri_cout
+Xfa_0 ri_a0 ri_b0 ri_c0 ri_sout0 ri_c1 fa_four_vdd fa_four_gnd fa
+Xfa_1 ri_a1 ri_b1 ri_c1 ri_sout1 ri_c2 fa_four_vdd fa_four_gnd fa
+Xfa_2 ri_a2 ri_b2 ri_c2 ri_sout2 ri_c3 fa_four_vdd fa_four_gnd fa
+Xfa_3 ri_a3 ri_b3 ri_c3 ri_sout3 ri_cout fa_four_vdd fa_four_gnd fa
+
+.ends
+
+
+* Top level circuit clk_cra
+
+Xff_0 clk in_a0 ffa0 vdd gnd ff
+Xff_1 clk in_b0 ffb0 vdd gnd ff
+Xff_2 clk in_cin ffc0 vdd gnd ff
+Xff_4 clk in_a1 ff_a1 vdd gnd ff
+Xff_5 clk in_b1 ff_b1 vdd gnd ff
+Xff_6 clk in_a2 ff_a2 vdd gnd ff
+Xff_7 clk in_b2 ff_b2 vdd gnd ff
+Xff_8 clk in_a3 ff_a3 vdd gnd ff
+Xff_9 clk in_b3 ff_b3 vdd gnd ff
+
+Xripple_0 vdd gnd ffc0 ffa0 ffb0 ff_ins0 ff_a1 ff_b1 ff_ins1 ff_a2 ff_b2 ff_ins2 ff_a3
++ ff_b3 ff_ins3 ff_incout ripple
+
+Xff_3 clk ff_ins0 out_s0 vdd gnd ff
+Xff_10 clk ff_ins1 out_s1 vdd gnd ff
+Xff_11 clk ff_ins2 out_s2 vdd gnd ff
+Xff_12 clk ff_ins3 out_s3 vdd gnd ff
+Xff_13 clk ff_incout out_cout vdd gnd ff
+
+.tran 1p 6000p
+.measure tran clk_period trig v(clk) val=0.9 rise=1 targ v(clk) val=0.9 rise=2
+.measure tran clk_freq param = '1/(clk_period)'
+.control
+run
+Plot (in_a0)+0 (in_a1)+0 (in_a2)+0 (in_a3)+0 (clk)+2 (in_cin)+4 (out_cout)+6
+
+*(out_s0)+4  (out_s1)+6 (out_s2)+8 (out_s3)+10
+.endc
+.end

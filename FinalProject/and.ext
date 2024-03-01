@@ -1,0 +1,40 @@
+timestamp 1701906181
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use nand_two nand_two_0 1 0 25 0 1 17
+use nand_two nand_two_1 1 0 67 0 1 17
+port "andgnd" 5 -18 3 -18 3 m1
+port "andvout" 3 89 25 89 25 m1
+port "anda" 1 -18 23 -18 23 m1
+port "andvdd" 4 -18 51 -18 51 m1
+port "andb" 2 -18 33 -18 33 m1
+node "andgnd" 1 35532 -18 3 m1 0 0 0 0 0 0 0 0 0 0 0 0 756 230 0 0 0 0
+node "andvout" 0 1504 89 25 m1 0 0 0 0 0 0 0 0 0 0 0 0 32 24 0 0 0 0
+node "nandout" 0 4230 36 21 m1 0 0 0 0 0 0 0 0 0 0 0 0 90 42 0 0 0 0
+node "anda" 0 5828 -18 23 m1 0 0 0 0 0 0 0 0 0 0 0 0 124 70 0 0 0 0
+node "andvdd" 1 28764 -18 51 m1 0 0 0 0 0 0 0 0 0 0 0 0 636 224 0 0 0 0
+node "a_55_33#" 167 3652 55 33 p 0 0 0 0 28 32 0 0 0 0 0 0 0 0 0 0 0 0
+node "andb" 978 22228 -18 33 m1 0 0 0 0 180 176 0 0 0 0 0 0 40 28 0 0 0 0
+cap "andb" "andvdd" 720
+subcap "andgnd" -6016
+subcap "andvdd" -24252
+subcap "andb" -13566
+cap "nand_two_0/inB" "nand_two_0/vdd" 1744
+cap "nand_two_0/vdd" "nand_two_0/out" 2060
+cap "nand_two_0/out" "nand_two_1/out" 240
+cap "nand_two_0/vdd" "nand_two_1/out" -376
+cap "andvdd" "nand_two_1/vdd" 564
+merge "nand_two_0/inB" "andb" -11916 0 0 0 0 -76 -76 0 0 0 0 0 0 -40 -28 0 0 0 0
+merge "nand_two_1/vdd" "nand_two_0/vdd" -24252 0 0 0 0 0 0 0 0 0 0 0 0 -396 -162 0 0 0 -56
+merge "nand_two_0/vdd" "andvdd"
+merge "nand_two_1/out" "andvout" -564 0 0 0 0 0 0 0 0 0 0 0 0 -12 -14 0 0 0 0
+merge "nand_two_1/inB" "nand_two_1/inA" -4780 0 0 0 0 -8 -16 0 0 0 0 0 0 -24 -28 0 0 0 0
+merge "nand_two_1/inA" "nand_two_0/out"
+merge "nand_two_0/out" "nandout"
+merge "nandout" "a_55_33#"
+merge "nand_two_1/gnd" "nand_two_0/gnd" -20727 0 0 0 0 0 0 0 0 0 0 0 0 -441 -161 0 0 0 0
+merge "nand_two_0/gnd" "andgnd"
+merge "nand_two_0/inA" "anda" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0

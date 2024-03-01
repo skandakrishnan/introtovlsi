@@ -1,0 +1,47 @@
+timestamp 1701914890
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use nand_two nand_two_0 1 0 25 0 1 17
+use nand_two nand_two_1 1 0 84 0 1 17
+use nand_two nand_two_2 1 0 140 0 1 17
+port "orgnd" 5 -11 4 -11 4 m1
+port "orout" 3 164 25 164 25 m1
+port "orain" 1 -12 23 -12 23 m1
+port "orvdd" 4 -13 52 -13 52 m1
+port "orbin" 2 -13 65 -13 65 m1
+node "orgnd" 1 55601 -11 4 m1 0 0 0 0 0 0 0 0 0 0 0 0 1225 364 0 0 0 0
+node "orout" 0 2444 164 25 m1 0 0 0 0 0 0 0 0 0 0 0 0 52 34 0 0 0 0
+node "nand1out" 0 7614 97 21 m1 0 0 0 0 0 0 0 0 0 0 0 0 162 66 0 0 0 0
+node "orain" 0 4700 -12 23 m1 0 0 0 0 0 0 0 0 0 0 0 0 100 58 0 0 0 0
+node "orvdd" 1 1974 -13 52 m1 0 0 0 0 0 0 0 0 0 0 0 0 1062 366 0 0 0 0
+node "nand0out" 191 17424 136 -7 pc 0 0 0 0 48 44 0 0 0 0 0 0 120 76 436 226 0 0
+node "a_13_n4#" 429 8888 13 -4 p 0 0 0 0 72 76 0 0 0 0 0 0 0 0 0 0 0 0
+node "orbin" 430 23220 -13 65 m1 0 0 0 0 88 84 0 0 0 0 0 0 392 204 0 0 0 0
+node "w_n6_27#" 15214 0 -6 27 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4760 396
+cap "orvdd" "w_n6_27#" 46812
+cap "nand0out" "orgnd" 1680
+cap "orvdd" "orbin" 720
+cap "a_13_n4#" "orgnd" 840
+cap "w_n6_27#" "orbin" 4604
+subcap "orgnd" -27307
+cap "nand_two_1/inA" "nand_two_0/vdd" -1116
+merge "nand_two_2/inB" "nand_two_0/out" -1122 0 0 0 0 -2 -6 0 0 0 0 0 0 -12 -14 0 0 0 0
+merge "nand_two_0/out" "nand0out"
+merge "nand_two_2/inA" "nand_two_1/out" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -24 0 0 0 0
+merge "nand_two_1/out" "nand1out"
+merge "nand_two_0/inB" "nand_two_0/inA" -1868 0 0 0 0 -4 -12 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "nand_two_0/inA" "orain"
+merge "orain" "a_13_n4#"
+merge "nand_two_2/gnd" "nand_two_1/gnd" -27636 0 0 0 0 0 0 0 0 0 0 0 0 -588 -210 0 0 0 0
+merge "nand_two_1/gnd" "nand_two_0/gnd"
+merge "nand_two_0/gnd" "orgnd"
+merge "nand_two_2/vdd" "nand_two_1/vdd" 0 0 0 0 0 0 0 0 0 0 0 0 0 -540 -216 0 0 -3528 -420
+merge "nand_two_1/vdd" "nand_two_0/vdd"
+merge "nand_two_0/vdd" "w_n6_27#"
+merge "w_n6_27#" "orvdd"
+merge "nand_two_2/out" "orout" -1128 0 0 0 0 0 0 0 0 0 0 0 0 -24 -20 0 0 0 0
+merge "nand_two_1/inB" "nand_two_1/inA" 0 0 0 0 0 -4 -12 0 0 0 0 0 0 0 0 0 0 0 0
+merge "nand_two_1/inA" "orbin"

@@ -1,0 +1,20 @@
+* SPICE3 file created from transgate.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 trans_vdd w_n16_15# 11.52fF
+C1 trans_clkp w_n16_15# 4.53fF
+C2 trans_gnd Gnd 9.12fF
+C3 trans_clkn Gnd 7.46fF
+C4 trans_vout Gnd 3.95fF
+C5 trans_vin Gnd 4.89fF
+C6 trans_clkp Gnd 3.89fF
+.ends
+

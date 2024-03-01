@@ -1,0 +1,19 @@
+timestamp 1699568183
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+port "inv_gnd" 4 -6 -6 -6 -6 m1
+port "inv_vout" 3 21 12 21 12 m1
+port "inv_vin" 2 -6 12 -6 12 m1
+port "inv_vdd" 1 -6 38 -6 38 m1
+node "inv_gnd" 93 7426 -6 -6 m1 20 18 16 16 0 0 0 0 0 0 0 0 190 80 0 0 0 0
+node "inv_vout" 129 3948 21 12 m1 20 18 40 26 0 0 0 0 0 0 0 0 152 84 0 0 0 0
+node "inv_vin" 382 5966 -6 12 m1 0 0 0 0 80 76 0 0 0 0 0 0 40 28 0 0 0 0
+node "inv_vdd" 2721 0 -6 38 m1 16 16 40 26 0 0 0 0 0 0 0 0 245 96 0 0 756 110
+cap "inv_vin" "inv_vdd" 2146
+cap "inv_vout" "inv_vdd" 940
+device mosfet nfet 4 0 5 1 2 4 "Gnd!" "inv_vin" 4 0 "inv_gnd" 4 0 "inv_vout" 4 0
+device mosfet pfet 4 20 5 21 2 8 "inv_vdd" "inv_vin" 4 0 "inv_vdd" 8 0 "inv_vout" 8 0
+subcap "inv_gnd" -3431

@@ -1,0 +1,72 @@
+* SPICE3 file created from ff.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd w_n16_15#
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 trans_vdd w_n16_15# 11.52fF
+C1 trans_clkp w_n16_15# 4.53fF
+C2 trans_gnd Gnd 9.12fF
+C3 trans_clkn Gnd 7.46fF
+C4 trans_vout Gnd 3.95fF
+C5 trans_vin Gnd 4.89fF
+C6 trans_clkp Gnd 3.89fF
+.ends
+
+.subckt invertor inv_vdd inv_vin inv_vout inv_gnd
+M1000 inv_vout inv_vin inv_gnd Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 inv_vout inv_vin inv_vdd inv_vdd pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 inv_vin inv_vdd 2.15fF
+C1 inv_gnd Gnd 4.00fF
+C2 inv_vout Gnd 3.95fF
+C3 inv_vin Gnd 5.97fF
+.ends
+
+.subckt tristate tri_vin tri_vout tri_clkp tri_clkn tri_vdd tri_gnd tri_int
+Xinvertor_0 tri_vdd tri_vin tri_int tri_gnd invertor
+Xtransgate_0 tri_clkp tri_int tri_clkn tri_vout tri_vdd tri_gnd tri_vdd transgate
+C0 tri_gnd Gnd 21.62fF
+C1 tri_vout Gnd 3.38fF
+C2 tri_int Gnd 8.08fF
+.ends
+
+.subckt ff ff_clk ff_din ff_qout ff_vdd ff_gnd
+Xtransgate_1 clkn inv2_vout ff_clk try2_vout ff_vdd ff_gnd ff_vdd transgate
+Xtristate_0 inv2_vout tryst1_vout clkn ff_clk ff_vdd ff_gnd triint0 tristate
+Xtristate_1 inv3_vout try2_vout ff_clk clkn ff_vdd ff_gnd triint1 tristate
+Xinvertor_0 ff_vdd ff_clk clkn ff_gnd invertor
+Xinvertor_1 ff_vdd ff_din inv1_vout ff_gnd invertor
+Xinvertor_2 ff_vdd tryst1_vout inv2_vout ff_gnd invertor
+Xinvertor_3 ff_vdd try2_vout inv3_vout ff_gnd invertor
+Xinvertor_4 ff_vdd inv3_vout ff_qout ff_gnd invertor
+Xtransgate_0 ff_clk inv1_vout clkn tryst1_vout ff_vdd ff_gnd ff_vdd transgate
+C0 ff_vdd ff_din 16.97fF
+C1 try2_vout ff_vdd 26.11fF
+C2 ff_gnd clkn 2.16fF
+C3 ff_vdd clkn 3.42fF
+C4 ff_gnd inv3_vout 19.80fF
+C5 inv2_vout ff_gnd 18.18fF
+C6 tryst1_vout ff_vdd 24.33fF
+C7 clkn ff_clk 2.88fF
+C8 ff_vdd ff_clk 2.55fF
+C9 clkn Gnd 6.93fF
+C10 inv1_vout Gnd 3.20fF
+C11 ff_qout Gnd 4.51fF
+C12 ff_din Gnd 3.26fF
+C13 ff_clk Gnd 12.45fF
+C14 try2_vout Gnd 2.82fF
+C15 triint1 Gnd 8.08fF
+C16 inv3_vout Gnd 11.19fF
+C17 ff_gnd Gnd 27.82fF
+C18 tryst1_vout Gnd 8.16fF
+C19 triint0 Gnd 4.14fF
+C20 inv2_vout Gnd 11.65fF
+.ends
+

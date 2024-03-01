@@ -1,0 +1,73 @@
+magic
+tech scmos
+timestamp 1701904826
+<< nwell >>
+rect -54 24 134 52
+<< polysilicon >>
+rect -24 55 12 57
+rect 10 39 12 55
+rect 10 6 17 8
+rect 15 -5 17 6
+rect 15 -7 100 -5
+<< metal1 >>
+rect -67 61 -21 65
+rect 86 61 101 65
+rect -67 43 134 51
+rect -66 19 -51 23
+rect -47 19 -41 23
+rect 38 19 42 23
+rect 55 19 88 23
+rect 105 19 118 23
+rect 122 19 134 23
+rect 105 18 134 19
+rect -66 0 133 6
+rect -25 -15 -15 -11
+<< metal2 >>
+rect -11 72 126 76
+rect -11 23 -7 72
+rect 23 61 82 65
+rect 23 23 27 61
+rect -51 -19 -47 19
+rect 23 -11 27 19
+rect -11 -15 27 -11
+rect 122 19 126 72
+rect 34 -19 38 19
+rect -51 -23 38 -19
+<< m2contact >>
+rect 82 61 86 65
+rect -51 19 -47 23
+rect -11 19 -7 23
+rect 23 19 27 23
+rect 34 19 38 23
+rect 118 19 122 23
+rect -15 -15 -11 -11
+use transgate  transgate_1
+timestamp 1700697364
+transform 1 0 94 0 1 9
+box -16 -24 21 56
+use invertor  invertor_1
+timestamp 1699568183
+transform 1 0 44 0 1 9
+box -6 -9 21 43
+use transgate  transgate_0
+timestamp 1700697364
+transform 1 0 -28 0 1 9
+box -16 -24 21 56
+use invertor  invertor_0
+timestamp 1699568183
+transform 1 0 6 0 1 9
+box -6 -9 21 43
+<< labels >>
+rlabel metal1 -67 63 -67 63 3 xorb
+port 2 e
+rlabel metal1 -66 21 -66 21 3 xora
+port 1 e
+rlabel metal1 -67 47 -67 47 3 xorvdd
+port 4 e
+rlabel metal1 -66 3 -66 3 3 xorgnd
+port 5 e
+rlabel metal1 134 20 134 20 7 xorvout
+port 3 w
+rlabel m2contact 25 23 25 23 1 invbout
+rlabel metal1 71 21 71 21 1 invaout
+<< end >>

@@ -1,0 +1,109 @@
+* SPICE3 file created from ripple.ext - technology: scmos
+
+.option scale=0.09u
+.include MagicNames.txt
+
+.global fa_four_vdd gnd 
+
+
+Vdd fa_four_vdd 0 dc 1.8
+
+va0 ri_a0 0 pulse(0 1.8 1000p 10p 10p 20000p 40000p)
+va1 ri_a1 0 pulse(0 1.8 1000p 10p 10p 20000p 40000p)
+va2 ri_a2 0 pulse(0 1.8 1000p 10p 10p 20000p 40000p)
+va3 ri_a3 0 pulse(0 1.8 1000p 10p 10p 20000p 40000p)
+
+vb0 ri_b0 0 pulse(0 0 1000p 10p 10p 20000p 40000p)
+vb1 ri_b1 0 pulse(0 0 1000p 10p 10p 20000p 40000p)
+vb2 ri_b2 0 pulse(0 0 1000p 10p 10p 20000p 40000p)
+vb3 ri_b3 0 pulse(0 0 1000p 10p 10p 20000p 40000p)
+
+vc0 ri_c0 0 pulse(0 1.8 1000p 10p 10p 20000p 40000p)
+
+.subckt nand_two out inA inB gnd vdd
+M1000 vdd inB out vdd pfet w=8 l=2
++  ad=112 pd=60 as=80 ps=36
+M1001 out inB a_n10_n7# Gnd nfet w=8 l=2
++  ad=56 pd=30 as=80 ps=36
+M1002 out inA vdd vdd pfet w=8 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_n10_n7# inA gnd Gnd nfet w=8 l=2
++  ad=0 pd=0 as=56 ps=30
+
+.ends
+
+.subckt or orain orbin orout orvdd orgnd
+Xnand_two_0 nand0out orain orain orgnd orvdd nand_two
+Xnand_two_2 orout nand1out nand0out orgnd orvdd nand_two
+Xnand_two_1 nand1out orbin orbin orgnd orvdd nand_two
+
+.ends
+
+.subckt and anda andb andvout andvdd andgnd
+Xnand_two_0 nandout anda andb andgnd andvdd nand_two
+Xnand_two_1 andvout nandout nandout andgnd andvdd nand_two
+
+.ends
+
+.subckt carry carryain carrybin carrycin carryout carryvdd carrygnd
+Xor_0 and1out and0out or0out carryvdd carrygnd or
+Xor_1 and2out or0out carryout carryvdd carrygnd or
+Xand_0 carryain carrycin and0out carryvdd carrygnd and
+Xand_1 carrybin carrycin and1out carryvdd carrygnd and
+Xand_2 carrybin carryain and2out carryvdd carrygnd and
+
+.ends
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd w_n16_15#
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+
+.ends
+
+.subckt invertor inv_vdd inv_vin inv_vout inv_gnd
+M1000 inv_vout inv_vin inv_gnd Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 inv_vout inv_vin inv_vdd inv_vdd pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+
+.ends
+
+.subckt xor xora xorb xorvout xorvdd xorgnd
+Xtransgate_1 invbout invaout xorb xorvout xorvdd xorgnd xorvdd transgate
+Xinvertor_0 xorvdd xorb invbout xorgnd invertor
+Xinvertor_1 xorvdd xora invaout xorgnd invertor
+Xtransgate_0 xorb xora invbout xorvout xorvdd xorgnd xorvdd transgate
+
+.ends
+
+.subckt sum sumain sumbin sumcin sumvout sumvdd sumgnd
+Xxor_0 sumain sumbin xor1out sumvdd sumgnd xor
+Xxor_1 xor1out sumcin sumvout sumvdd sumgnd xor
+
+.ends
+
+.subckt fa fa_ain fa_bin fa_cin fa_sout fa_cout fa_vdd fa_gnd
+Xcarry_0 fa_ain fa_bin fa_cin fa_cout fa_vdd fa_gnd carry
+Xsum_0 fa_bin fa_ain fa_cin fa_sout fa_vdd fa_gnd sum
+
+.ends
+
+
+* Top level circuit ripple
+
+Xfa_0 ri_a0 ri_b0 ri_c0 ri_sout0 ri_c1 fa_four_vdd gnd fa
+Xfa_1 ri_a1 ri_b1 ri_c1 ri_sout1 ri_c2 fa_four_vdd gnd fa
+Xfa_2 ri_a2 ri_b2 ri_c2 ri_sout2 ri_c3 fa_four_vdd gnd fa
+Xfa_3 ri_a3 ri_b3 ri_c3 ri_sout3 ri_cout fa_four_vdd gnd fa
+
+.tran 1p 7000p
+.measure tran comb_delay trig v(ri_c0) val=0.9 rise=1 targ v(ri_cout) val=0.9 rise=1
+.control
+run
+plot (ri_c0)+0 (ri_sout0)+2  (ri_sout1)+4 (ri_sout2)+6 (ri_sout3)+8 (ri_cout)+10
+plot (ri_c0)+0 (ri_sout0)+2 (ri_c0)+2  (ri_sout1)+ 4(ri_c1)+4 (ri_sout2)+6 (ri_c2)+6 (ri_sout3)+8 (ri_c3)+8 (ri_cout)+10
+Plot (ri_a0)+0 (ri_a1)+2 (ri_a2)+4 (ri_a3)+6 (ri_c0)+8 
+.endc
+.end

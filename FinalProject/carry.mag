@@ -1,0 +1,87 @@
+magic
+tech scmos
+timestamp 1701918124
+<< nwell >>
+rect -16 27 768 55
+<< polysilicon >>
+rect 10 60 138 62
+rect 381 60 466 62
+<< metal1 >>
+rect 366 67 385 71
+rect 109 63 273 67
+rect 381 66 385 67
+rect 550 63 589 67
+rect -16 48 768 54
+rect -16 31 6 35
+rect 424 27 428 29
+rect -16 21 -10 25
+rect -6 21 6 25
+rect 123 21 130 25
+rect 228 21 267 27
+rect 447 21 451 25
+rect 541 23 594 27
+rect 748 23 768 27
+rect 539 21 594 23
+rect -16 0 769 7
+rect -16 -19 -5 -15
+<< metal2 >>
+rect -10 74 121 78
+rect -10 25 -6 74
+rect 117 71 121 74
+rect 117 67 362 71
+rect 105 27 109 63
+rect 424 63 546 67
+rect 424 33 428 63
+rect 119 -15 123 21
+rect 443 -15 447 21
+rect -1 -19 447 -15
+<< polycontact >>
+rect 381 62 385 66
+<< m2contact >>
+rect 362 67 366 71
+rect 105 63 109 67
+rect 546 63 550 67
+rect 424 29 428 33
+rect -10 21 -6 25
+rect 105 23 109 27
+rect 119 21 123 25
+rect 443 21 447 25
+rect -5 -19 -1 -15
+use or  or_1
+timestamp 1701914890
+transform 1 0 596 0 1 0
+box -13 -7 164 67
+use and  and_2
+timestamp 1701906181
+transform 1 0 465 0 1 0
+box -18 0 90 62
+use or  or_0
+timestamp 1701914890
+transform 1 0 264 0 1 0
+box -13 -7 164 67
+use and  and_1
+timestamp 1701906181
+transform 1 0 142 0 1 0
+box -18 0 90 62
+use and  and_0
+timestamp 1701906181
+transform 1 0 18 0 1 0
+box -18 0 90 62
+<< labels >>
+rlabel metal1 -16 51 -16 51 3 carryvdd
+port 5 e
+rlabel metal1 -16 33 -16 33 3 carrycin
+port 3 e
+rlabel metal1 -16 23 -16 23 3 carryain
+port 1 e
+rlabel metal1 -16 -17 -16 -17 2 carrybin
+port 2 ne
+rlabel metal1 -16 4 -16 4 3 carrygnd
+port 6 e
+rlabel metal1 768 25 768 25 7 carryout
+port 4 w
+rlabel m2contact 109 25 109 25 1 and0out
+rlabel metal1 245 24 245 24 1 and1out
+rlabel m2contact 428 31 428 31 1 or0out
+rlabel metal1 559 24 559 24 1 and2out
+<< end >>

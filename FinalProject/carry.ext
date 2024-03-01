@@ -1,0 +1,89 @@
+timestamp 1701918124
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use and and_0 1 0 18 0 1 0
+use and and_1 1 0 142 0 1 0
+use or or_0 1 0 264 0 1 0
+use and and_2 1 0 465 0 1 0
+use or or_1 1 0 596 0 1 0
+port "carrygnd" 6 -16 4 -16 4 m1
+port "carryout" 4 768 25 768 25 m1
+port "carrybin" 2 -16 -17 -16 -17 m1
+port "carrycin" 3 -16 33 -16 33 m1
+port "carryvdd" 5 -16 51 -16 51 m1
+port "carryain" 1 -16 23 -16 23 m1
+node "carrygnd" 5 258265 -16 4 m1 0 0 0 0 0 0 0 0 0 0 0 0 5495 1584 0 0 0 0
+node "carryout" 0 3760 768 25 m1 0 0 0 0 0 0 0 0 0 0 0 0 80 48 0 0 0 0
+node "and2out" 0 15134 539 21 m1 0 0 0 0 0 0 0 0 0 0 0 0 322 122 0 0 0 0
+node "and1out" 0 10998 228 21 m1 0 0 0 0 0 0 0 0 0 0 0 0 234 90 0 0 0 0
+node "carrybin" 4 44848 -16 -17 m1 0 0 0 0 0 0 0 0 0 0 0 0 136 92 2128 1072 0 0
+node "carrycin" 0 0 -16 33 m1 0 0 0 0 0 0 0 0 0 0 0 0 88 52 0 0 0 0
+node "carryvdd" 6 0 -16 51 m1 0 0 0 0 0 0 0 0 0 0 0 0 4704 1580 0 0 0 0
+node "or0out" 2 17812 424 27 m1 0 0 0 0 0 0 0 0 0 0 0 0 196 114 640 328 0 0
+node "and0out" 2 32792 105 23 v 0 0 0 0 0 0 0 0 0 0 0 0 688 360 176 96 0 0
+node "a_10_60#" 1527 30784 10 60 p 0 0 0 0 256 260 0 0 0 0 0 0 0 0 0 0 0 0
+node "carryain" 1018 60862 -16 23 m1 0 0 0 0 186 182 0 0 0 0 0 0 200 116 1744 880 0 0
+node "w_n16_27#" 70163 0 -16 27 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 21952 1624
+cap "carryvdd" "and0out" 1080
+cap "w_n16_27#" "and0out" 1672
+cap "carryain" "carrycin" 720
+cap "carrybin" "carrygnd" 2520
+cap "and0out" "a_10_60#" 152
+cap "w_n16_27#" "carryvdd" 221088
+cap "carryvdd" "carryain" 1080
+cap "w_n16_27#" "carryain" 1368
+cap "carryvdd" "or0out" 1080
+cap "w_n16_27#" "or0out" 2344
+cap "or0out" "carryain" 152
+cap "w_n16_27#" "carrycin" 4136
+subcap "carrygnd" -227997
+subcap "carrybin" -40208
+subcap "a_10_60#" -7854
+subcap "carryain" -47656
+cap "and_0/andb" "and_0/andvdd" 7136
+subcap "and0out" -27072
+cap "and_0/nand_two_1/vdd" "and_1/andb" 8264
+subcap "or0out" -6404
+cap "and_2/andb" "or_0/nand_two_2/vdd" 8264
+merge "or_1/nand_two_2/gnd" "or_1/orgnd" -221746 0 0 0 0 0 0 0 0 0 0 0 0 -4718 -1418 0 0 0 0
+merge "or_1/orgnd" "and_2/nand_two_1/gnd"
+merge "and_2/nand_two_1/gnd" "and_2/andgnd"
+merge "and_2/andgnd" "or_0/nand_two_2/gnd"
+merge "or_0/nand_two_2/gnd" "or_0/nand_two_1/gnd"
+merge "or_0/nand_two_1/gnd" "or_0/orgnd"
+merge "or_0/orgnd" "and_1/nand_two_1/gnd"
+merge "and_1/nand_two_1/gnd" "and_1/andgnd"
+merge "and_1/andgnd" "and_0/nand_two_1/gnd"
+merge "and_0/nand_two_1/gnd" "and_0/andgnd"
+merge "and_0/andgnd" "carrygnd"
+merge "and_2/andb" "and_0/anda" -18073 0 0 0 0 -36 -34 0 0 0 0 0 0 -61 -70 -182 -365 0 0
+merge "and_0/anda" "carryain"
+merge "and_1/andb" "and_0/andb" -26450 0 0 0 0 -78 -86 0 0 0 0 0 0 -24 -20 0 0 0 0
+merge "and_0/andb" "a_10_60#"
+merge "a_10_60#" "carrycin"
+merge "or_1/nand_two_2/vdd" "or_1/orvdd" -20868 0 0 0 0 0 0 0 0 0 0 0 0 -4032 -1404 0 0 -16576 -1464
+merge "or_1/orvdd" "and_2/nand_two_0/vdd"
+merge "and_2/nand_two_0/vdd" "and_2/andvdd"
+merge "and_2/andvdd" "or_0/nand_two_2/vdd"
+merge "or_0/nand_two_2/vdd" "or_0/nand_two_1/vdd"
+merge "or_0/nand_two_1/vdd" "or_0/orvdd"
+merge "or_0/orvdd" "and_1/nand_two_1/vdd"
+merge "and_1/nand_two_1/vdd" "and_1/andvdd"
+merge "and_1/andvdd" "and_0/nand_two_1/vdd"
+merge "and_0/nand_two_1/vdd" "and_0/andvdd"
+merge "and_0/andvdd" "w_n16_27#"
+merge "w_n16_27#" "carryvdd"
+merge "or_0/orain" "and_1/andvout" -3384 0 0 0 0 0 0 0 0 0 0 0 0 -72 -52 0 0 0 0
+merge "and_1/andvout" "and1out"
+merge "or_1/orain" "and_2/andvout" -4324 0 0 0 0 0 0 0 0 0 0 0 0 -92 -74 0 0 0 0
+merge "and_2/andvout" "and2out"
+merge "and_2/anda" "and_1/anda" -1880 0 0 0 0 0 0 0 0 0 0 0 0 -40 -36 0 0 0 0
+merge "and_1/anda" "carrybin"
+merge "or_1/orout" "carryout" -2256 0 0 0 0 0 0 0 0 0 0 0 0 -48 -32 0 0 0 0
+merge "or_1/orbin" "or_0/orout" -1128 0 0 0 0 0 0 0 0 0 0 0 0 -24 -28 0 0 0 0
+merge "or_0/orout" "or0out"
+merge "or_0/orbin" "and_0/andvout" -4512 0 0 0 0 0 0 0 0 0 0 0 0 -96 -64 0 0 0 0
+merge "and_0/andvout" "and0out"

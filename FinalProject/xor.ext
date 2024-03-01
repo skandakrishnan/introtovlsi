@@ -1,0 +1,67 @@
+timestamp 1701904826
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use invertor invertor_0 1 0 6 0 1 9
+use transgate transgate_0 1 0 -28 0 1 9
+use invertor invertor_1 1 0 44 0 1 9
+use transgate transgate_1 1 0 94 0 1 9
+port "xorgnd" 5 -66 3 -66 3 m1
+port "xorvout" 3 134 20 134 20 m1
+port "xora" 1 -66 21 -66 21 m1
+port "xorvdd" 4 -67 47 -67 47 m1
+port "xorb" 2 -67 63 -67 63 m1
+node "xorgnd" 2 55554 -66 3 m1 0 0 0 0 0 0 0 0 0 0 0 0 1194 410 0 0 0 0
+node "invaout" 0 6204 55 19 m1 0 0 0 0 0 0 0 0 0 0 0 0 132 74 0 0 0 0
+node "xorvout" 2 21019 134 20 m1 0 0 0 0 0 0 0 0 0 0 0 0 161 84 988 502 0 0
+node "xora" 2 17680 -66 21 m1 0 0 0 0 0 0 0 0 0 0 0 0 132 82 692 354 0 0
+node "xorvdd" 1 4888 -67 47 m1 0 0 0 0 0 0 0 0 0 0 0 0 1608 418 0 0 0 0
+node "invbout" 2 16760 -25 -15 m1 0 0 0 0 0 0 0 0 0 0 0 0 148 98 708 362 0 0
+node "xorb" 1 8648 -67 63 m1 0 0 0 0 0 0 0 0 0 0 0 0 184 100 0 0 0 0
+node "a_10_6#" 1229 24834 10 6 p 0 0 0 0 206 210 0 0 0 0 0 0 0 0 0 0 0 0
+node "a_n24_55#" 620 9442 -24 55 p 0 0 0 0 104 108 0 0 0 0 0 0 0 0 0 0 0 0
+node "w_n54_24#" 16825 0 -54 24 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5264 432
+cap "a_10_6#" "xorgnd" 360
+cap "invbout" "xorvdd" 1440
+cap "w_n54_24#" "invbout" 1520
+cap "a_10_6#" "xora" 152
+cap "invbout" "a_10_6#" 152
+cap "xora" "xorgnd" 2160
+cap "invbout" "xorgnd" 1080
+cap "w_n54_24#" "xorvdd" 69936
+cap "xorvout" "w_n54_24#" 3040
+cap "xorvout" "xorvdd" 2880
+cap "w_n54_24#" "a_n24_55#" 3254
+cap "xorvdd" "a_n24_55#" 480
+cap "xorvout" "a_n24_55#" 152
+subcap "xorgnd" -31114
+subcap "xora" -6452
+cap "invertor_0/inv_vin" "invertor_0/inv_vdd" -260
+cap "transgate_1/trans_clkp" "invertor_1/inv_vdd" 60
+merge "transgate_1/trans_clkp" "transgate_0/trans_clkn" -2256 0 0 0 0 0 0 0 0 0 0 0 0 -48 -48 0 0 0 0
+merge "transgate_0/trans_clkn" "invertor_0/inv_vout"
+merge "invertor_0/inv_vout" "invbout"
+merge "invertor_1/inv_vin" "transgate_0/trans_vin" -1316 0 0 0 0 0 0 0 0 0 0 0 0 -28 -30 0 0 0 0
+merge "transgate_0/trans_vin" "xora"
+merge "transgate_1/trans_gnd" "invertor_1/inv_gnd" -36096 0 0 0 0 0 0 0 0 0 0 0 0 -768 -304 0 0 0 0
+merge "invertor_1/inv_gnd" "transgate_0/trans_gnd"
+merge "transgate_0/trans_gnd" "invertor_0/inv_gnd"
+merge "invertor_0/inv_gnd" "xorgnd"
+merge "transgate_1/trans_vout" "transgate_0/trans_vout" -2632 0 0 0 0 0 0 0 0 0 0 0 0 -56 -46 0 0 0 0
+merge "transgate_0/trans_vout" "xorvout"
+merge "transgate_1/trans_vdd" "transgate_1/w_n16_15#" 0 0 0 0 0 0 0 0 0 0 0 0 0 -896 -312 0 0 -3584 -480
+merge "transgate_1/w_n16_15#" "invertor_1/inv_vdd"
+merge "invertor_1/inv_vdd" "transgate_0/trans_vdd"
+merge "transgate_0/trans_vdd" "transgate_0/w_n16_15#"
+merge "transgate_0/w_n16_15#" "invertor_0/inv_vdd"
+merge "invertor_0/inv_vdd" "w_n54_24#"
+merge "w_n54_24#" "xorvdd"
+merge "transgate_1/trans_clkn" "transgate_0/trans_clkp" -2902 0 0 0 0 -10 -26 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "transgate_0/trans_clkp" "xorb"
+merge "xorb" "invertor_0/inv_vin"
+merge "invertor_0/inv_vin" "a_n24_55#"
+merge "a_n24_55#" "a_10_6#"
+merge "transgate_1/trans_vin" "invertor_1/inv_vout" -3760 0 0 0 0 0 0 0 0 0 0 0 0 -80 -56 0 0 0 0
+merge "invertor_1/inv_vout" "invaout"

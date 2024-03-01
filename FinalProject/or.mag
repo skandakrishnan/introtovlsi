@@ -1,0 +1,57 @@
+magic
+tech scmos
+timestamp 1701914890
+<< nwell >>
+rect -6 27 164 55
+<< polysilicon >>
+rect 72 57 86 59
+rect 72 46 74 57
+rect 84 46 86 57
+rect 13 -2 15 9
+rect 25 -2 27 9
+rect 13 -4 27 -2
+rect 140 -7 142 9
+<< metal1 >>
+rect -13 63 81 67
+rect -13 48 164 54
+rect -12 21 13 25
+rect 39 23 46 27
+rect 97 21 124 27
+rect 151 23 164 27
+rect -11 0 164 7
+rect 125 -7 136 -3
+<< metal2 >>
+rect 46 -3 50 23
+rect 46 -7 121 -3
+<< polycontact >>
+rect 77 59 81 63
+rect 136 -7 140 -3
+<< m2contact >>
+rect 46 23 50 27
+rect 121 -7 125 -3
+use nand_two  nand_two_2
+timestamp 1698975745
+transform 1 0 140 0 1 17
+box -25 -17 17 38
+use nand_two  nand_two_1
+timestamp 1698975745
+transform 1 0 84 0 1 17
+box -25 -17 17 38
+use nand_two  nand_two_0
+timestamp 1698975745
+transform 1 0 25 0 1 17
+box -25 -17 17 38
+<< labels >>
+rlabel metal1 -12 23 -12 23 3 orain
+port 1 e
+rlabel metal1 -13 52 -13 52 3 orvdd
+port 4 e
+rlabel metal1 -11 4 -11 4 3 orgnd
+port 5 e
+rlabel metal1 164 25 164 25 7 orout
+port 3 w
+rlabel metal1 -13 65 -13 65 4 orbin
+port 2 se
+rlabel metal1 45 25 45 25 1 nand0out
+rlabel metal1 104 25 104 25 1 nand1out
+<< end >>

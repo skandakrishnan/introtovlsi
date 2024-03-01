@@ -1,0 +1,70 @@
+* SPICE3 file created from carry.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt nand_two out inA inB gnd vdd
+M1000 vdd inB out vdd pfet w=8 l=2
++  ad=112 pd=60 as=80 ps=36
+M1001 out inB a_n10_n7# Gnd nfet w=8 l=2
++  ad=56 pd=30 as=80 ps=36
+M1002 out inA vdd vdd pfet w=8 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_n10_n7# inA gnd Gnd nfet w=8 l=2
++  ad=0 pd=0 as=56 ps=30
+C0 inA vdd 3.34fF
+C1 vdd inB 4.60fF
+C2 gnd Gnd 7.52fF
+C3 out Gnd 4.14fF
+C4 inB Gnd 3.10fF
+C5 inA Gnd 4.36fF
+.ends
+
+.subckt or orain orbin orout orvdd orgnd
+Xnand_two_0 nand0out orain orain orgnd orvdd nand_two
+Xnand_two_2 orout nand1out nand0out orgnd orvdd nand_two
+Xnand_two_1 nand1out orbin orbin orgnd orvdd nand_two
+C0 orbin orvdd 4.21fF
+C1 orgnd Gnd 28.29fF
+C2 orbin Gnd 23.22fF
+C3 orout Gnd 2.44fF
+C4 nand0out Gnd 17.42fF
+C5 nand1out Gnd 7.61fF
+C6 orain Gnd 13.59fF
+.ends
+
+.subckt and anda andb andvout andvdd andgnd
+Xnand_two_0 nandout anda andb andgnd andvdd nand_two
+Xnand_two_1 andvout nandout nandout andgnd andvdd nand_two
+C0 andvdd nandout 2.06fF
+C1 andvdd andb 2.46fF
+C2 andgnd Gnd 29.52fF
+C3 nandout Gnd 7.88fF
+C4 andb Gnd 8.66fF
+C5 anda Gnd 5.83fF
+C6 andvdd Gnd 4.51fF
+.ends
+
+.subckt carry carryain carrybin carrycin carryout carryvdd carrygnd
+Xor_0 and1out and0out or0out carryvdd carrygnd or
+Xor_1 and2out or0out carryout carryvdd carrygnd or
+Xand_0 carryain carrycin and0out carryvdd carrygnd and
+Xand_1 carrybin carrycin and1out carryvdd carrygnd and
+Xand_2 carrybin carryain and2out carryvdd carrygnd and
+C0 carrygnd carrybin 2.52fF
+C1 carryain carryvdd 10.71fF
+C2 carryvdd or0out 3.42fF
+C3 and0out carryvdd 2.75fF
+C4 carrycin carryvdd 19.54fF
+C5 carrycin Gnd 22.93fF
+C6 carrybin Gnd 4.64fF
+C7 carrygnd Gnd 30.27fF
+C8 carryain Gnd 13.21fF
+C9 or0out Gnd 11.41fF
+C10 carryout Gnd 3.76fF
+C11 and2out Gnd 15.13fF
+C12 and0out Gnd 5.72fF
+C13 and1out Gnd 11.00fF
+.ends
+

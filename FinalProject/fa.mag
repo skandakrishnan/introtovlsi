@@ -1,0 +1,66 @@
+magic
+tech scmos
+timestamp 1701921996
+<< nwell >>
+rect 69 27 90 55
+rect 863 27 949 55
+rect 1375 27 1391 55
+<< polysilicon >>
+rect 879 -27 881 26
+<< metal1 >>
+rect 935 64 939 75
+rect 1171 72 1175 84
+rect 69 48 92 54
+rect 860 48 945 54
+rect 1373 46 1391 54
+rect 69 31 77 35
+rect 81 31 92 35
+rect 870 27 879 28
+rect 867 26 879 27
+rect 69 21 90 25
+rect 867 23 875 26
+rect 870 22 875 23
+rect 1373 21 1391 26
+rect 70 0 92 7
+rect 858 2 937 9
+rect 1370 3 1391 9
+rect 70 -19 93 -15
+rect 873 -27 875 -23
+rect 873 -32 879 -27
+<< metal2 >>
+rect 77 84 1171 88
+rect 77 35 81 84
+rect 376 75 935 79
+rect 376 67 380 75
+rect 513 -19 960 -15
+<< polycontact >>
+rect 875 22 879 26
+rect 875 -27 879 -23
+<< m2contact >>
+rect 1171 84 1175 88
+rect 935 75 939 79
+rect 77 31 81 35
+use carry  carry_0 /home/skanda
+timestamp 1701918124
+transform 1 0 103 0 1 0
+box -16 -19 769 78
+use sum  sum_0 /home/skanda
+timestamp 1701908128
+transform 1 0 940 0 1 -20
+box -9 0 441 99
+<< labels >>
+rlabel metal1 1391 23 1391 23 7 fa_sout
+port 4 w
+rlabel metal1 69 51 69 51 3 fa_vdd
+port 6 e
+rlabel metal1 69 23 69 23 3 fa_ain
+port 1 e
+rlabel metal1 69 33 69 33 3 fa_cin
+port 3 e
+rlabel metal1 70 -17 70 -17 3 fa_bin
+port 2 e
+rlabel metal1 70 3 70 3 3 fa_gnd
+port 7 e
+rlabel metal1 876 -32 876 -32 1 fa_cout
+port 5 n
+<< end >>

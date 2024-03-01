@@ -1,0 +1,148 @@
+magic
+tech scmos
+timestamp 1701972462
+<< nwell >>
+rect -28 24 446 52
+<< metal1 >>
+rect 95 85 377 90
+rect 95 65 99 85
+rect 185 65 264 69
+rect 373 65 377 85
+rect -18 61 99 65
+rect 179 61 264 65
+rect -28 43 446 50
+rect -28 30 -11 34
+rect 17 23 29 25
+rect 217 23 221 25
+rect -28 19 -22 23
+rect -18 19 6 23
+rect 13 21 29 23
+rect 13 19 25 21
+rect 17 17 25 19
+rect 49 19 59 23
+rect 62 19 95 23
+rect 99 19 109 23
+rect 113 19 123 23
+rect 126 19 136 23
+rect 140 19 154 23
+rect 157 19 200 23
+rect 204 19 222 23
+rect 231 19 260 23
+rect 264 19 273 23
+rect 277 19 288 23
+rect 291 19 302 23
+rect 306 19 327 23
+rect 330 19 373 23
+rect 377 19 394 23
+rect 410 19 419 23
+rect 422 19 446 23
+rect 231 15 235 19
+rect -28 0 446 6
+rect 75 -15 99 -11
+rect 200 -18 204 -15
+rect 260 -18 264 -11
+rect -18 -22 264 -18
+rect 346 -19 350 -15
+rect 373 -19 377 -15
+rect 346 -22 377 -19
+<< metal2 >>
+rect 71 70 179 74
+rect -22 23 -18 61
+rect -11 45 43 49
+rect -11 34 -7 45
+rect 38 23 43 45
+rect -22 -18 -18 19
+rect 38 19 45 23
+rect 25 -11 29 17
+rect 71 -11 75 70
+rect 175 65 179 70
+rect 109 45 221 49
+rect 109 23 113 45
+rect 217 29 221 45
+rect 273 45 398 49
+rect 273 23 277 45
+rect 394 23 398 45
+rect 136 5 140 19
+rect 231 5 235 11
+rect 136 1 235 5
+rect 302 5 306 19
+rect 406 5 410 19
+rect 302 1 410 5
+rect 25 -15 71 -11
+rect 75 -15 346 -11
+<< m2contact >>
+rect -22 61 -18 65
+rect 175 61 179 65
+rect -11 30 -7 34
+rect 217 25 221 29
+rect -22 19 -18 23
+rect 25 17 29 21
+rect 45 19 49 23
+rect 109 19 113 23
+rect 136 19 140 23
+rect 273 19 277 23
+rect 302 19 306 23
+rect 394 19 398 23
+rect 406 19 410 23
+rect 231 11 235 15
+rect 71 -15 75 -11
+rect -22 -22 -18 -18
+rect 346 -15 350 -11
+use invertor  invertor_4 /home/skanda
+timestamp 1699568183
+transform 1 0 415 0 1 9
+box -6 -9 21 43
+use tristate  tristate_1 /home/skanda
+timestamp 1700700052
+transform 1 0 354 0 1 -15
+box -41 -4 41 84
+use invertor  invertor_3
+timestamp 1699568183
+transform 1 0 284 0 1 9
+box -6 -9 21 43
+use transgate  transgate_1 /home/skanda
+timestamp 1700697364
+transform 1 0 257 0 1 9
+box -16 -24 21 56
+use tristate  tristate_0
+timestamp 1700700052
+transform 1 0 181 0 1 -15
+box -41 -4 41 84
+use invertor  invertor_2
+timestamp 1699568183
+transform 1 0 119 0 1 9
+box -6 -9 21 43
+use transgate  transgate_0
+timestamp 1700697364
+transform 1 0 92 0 1 9
+box -16 -24 21 56
+use invertor  invertor_1
+timestamp 1699568183
+transform 1 0 55 0 1 9
+box -6 -9 21 43
+use invertor  invertor_0
+timestamp 1699568183
+transform 1 0 6 0 1 9
+box -6 -9 21 43
+<< labels >>
+rlabel metal1 69 21 69 21 1 inv1_vout
+rlabel metal1 106 21 106 21 1 trans1_vout
+rlabel m2contact 219 27 219 27 1 tryst1_vout
+rlabel m2contact 138 21 138 21 1 inv2_vout
+rlabel m2contact 275 20 275 20 1 trans2_vout
+rlabel m2contact 304 21 304 21 1 inv3_vout
+rlabel m2contact 397 21 397 21 1 try2_vout
+rlabel m2contact 29 21 29 21 1 clkn
+rlabel metal1 177 20 177 20 1 triint0
+rlabel metal1 350 20 350 20 1 triint1
+rlabel metal1 -28 32 -28 32 3 ff_din
+port 2 e
+rlabel metal1 -28 21 -28 21 3 ff_clk
+port 1 e
+rlabel metal1 -28 3 -28 3 3 ff_gnd
+port 5 e
+rlabel metal1 446 21 446 21 7 ff_qout
+port 3 w
+rlabel metal1 -28 47 -28 47 3 ff_vdd
+port 4 e
+<< end >>

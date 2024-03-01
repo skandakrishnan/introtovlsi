@@ -1,0 +1,94 @@
+magic
+tech scmos
+timestamp 1701972901
+<< metal1 >>
+rect -24 80 10 86
+rect 1326 78 1577 86
+rect -24 63 8 67
+rect -24 53 8 57
+rect 1279 53 1344 58
+rect -23 32 14 39
+rect -24 13 15 17
+rect 600 -125 605 39
+rect 811 -97 815 9
+rect 1572 -84 1576 78
+rect 2150 -86 2468 -78
+rect 811 -101 844 -97
+rect 824 -111 845 -107
+rect 2132 -111 2184 -106
+rect 599 -132 899 -125
+rect 600 -136 605 -132
+rect 825 -151 845 -147
+rect 1440 -292 1445 -125
+rect 1645 -264 1649 -155
+rect 2464 -251 2468 -86
+rect 2913 -253 3301 -245
+rect 1645 -268 1689 -264
+rect 1647 -278 1676 -274
+rect 2975 -278 3019 -273
+rect 1440 -299 1698 -292
+rect 1440 -302 1445 -299
+rect 1644 -318 1685 -314
+rect 2267 -401 2271 -292
+rect 2266 -462 2271 -401
+rect 2477 -434 2481 -316
+rect 3297 -421 3301 -253
+rect 2477 -438 2521 -434
+rect 2474 -448 2505 -444
+rect 3796 -448 3847 -443
+rect 2266 -469 2524 -462
+rect 2474 -488 2520 -484
+rect 3305 -509 3311 -499
+use fa  fa_0 /home/skanda
+timestamp 1701921996
+transform 1 0 -64 0 1 32
+box 69 -32 1391 88
+use fa  fa_1
+timestamp 1701921996
+transform 1 0 770 0 1 -132
+box 69 -32 1391 88
+use fa  fa_2
+timestamp 1701921996
+transform 1 0 1602 0 1 -299
+box 69 -32 1391 88
+use fa  fa_3
+timestamp 1701921996
+transform 1 0 2432 0 1 -469
+box 69 -32 1391 88
+<< labels >>
+rlabel metal1 -24 84 -24 84 3 fa_four_vdd
+port 1 e
+rlabel metal1 -23 36 -23 36 3 fa_four_gnd
+port 2 e
+rlabel metal1 -24 65 -24 65 3 ri_c0
+port 3 e
+rlabel metal1 -24 55 -24 55 3 ri_a0
+port 4 e
+rlabel metal1 -24 15 -24 15 3 ri_b0
+port 5 e
+rlabel metal1 814 -36 814 -36 1 ri_c1
+rlabel metal1 824 -109 824 -109 1 ri_a1
+port 7 n
+rlabel metal1 1647 -199 1647 -199 1 ri_c2
+rlabel metal1 1647 -276 1647 -276 1 ri_a2
+port 10 n
+rlabel metal1 1644 -316 1644 -316 1 ri_b2
+port 11 n
+rlabel metal1 2478 -378 2478 -378 1 ri_c3
+rlabel metal1 2474 -446 2474 -446 1 ri_a3
+port 13 n
+rlabel metal1 3308 -509 3308 -509 1 ri_cout
+port 16 n
+rlabel metal1 3847 -446 3847 -446 7 ri_sout3
+port 15 w
+rlabel metal1 3019 -276 3019 -276 1 ri_sout2
+port 12 n
+rlabel metal1 2184 -109 2184 -109 1 ri_sout1
+port 9 n
+rlabel metal1 1344 55 1344 55 1 ri_sout0
+port 6 n
+rlabel metal1 825 -149 825 -149 1 ri_b1
+port 8 n
+rlabel metal1 2474 -486 2474 -486 1 ri_b3
+port 14 n
+<< end >>

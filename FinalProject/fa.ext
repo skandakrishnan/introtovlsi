@@ -1,0 +1,76 @@
+timestamp 1701921996
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use sum sum_0 1 0 940 0 1 -20
+use carry carry_0 1 0 103 0 1 0
+port "fa_bin" 2 70 -17 70 -17 m1
+port "fa_gnd" 7 70 3 70 3 m1
+port "fa_sout" 4 1391 23 1391 23 m1
+port "fa_ain" 1 69 23 69 23 m1
+port "fa_vdd" 6 69 51 69 51 m1
+port "fa_cin" 3 69 33 69 33 m1
+port "fa_cout" 5 876 -32 876 -32 m1
+node "m2_513_n19#" 3 33820 513 -19 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1788 902 0 0
+node "fa_bin" 0 4324 70 -17 m1 0 0 0 0 0 0 0 0 0 0 0 0 92 54 0 0 0 0
+node "m1_1370_3#" 0 5922 1370 3 m1 0 0 0 0 0 0 0 0 0 0 0 0 126 54 0 0 0 0
+node "m1_858_2#" 1 25333 858 2 m1 0 0 0 0 0 0 0 0 0 0 0 0 553 172 0 0 0 0
+node "fa_gnd" 0 7238 70 3 m1 0 0 0 0 0 0 0 0 0 0 0 0 154 58 0 0 0 0
+node "fa_sout" 0 4230 1391 23 m1 0 0 0 0 0 0 0 0 0 0 0 0 90 46 0 0 0 0
+node "fa_ain" 0 3948 69 23 m1 0 0 0 0 0 0 0 0 0 0 0 0 84 50 0 0 0 0
+node "m1_1373_46#" 0 752 1373 46 m1 0 0 0 0 0 0 0 0 0 0 0 0 144 52 0 0 0 0
+node "m1_860_48#" 1 846 860 48 m1 0 0 0 0 0 0 0 0 0 0 0 0 510 182 0 0 0 0
+node "fa_vdd" 0 564 69 51 m1 0 0 0 0 0 0 0 0 0 0 0 0 138 58 0 0 0 0
+node "m1_935_64#" 4 45912 935 64 m1 0 0 0 0 0 0 0 0 0 0 0 0 60 38 2284 1150 0 0
+node "fa_cin" 8 88732 69 33 m1 0 0 0 0 0 0 0 0 0 0 0 0 156 94 4604 2310 0 0
+node "fa_cout" 638 19175 876 -32 m1 0 0 0 0 138 126 0 0 0 0 0 0 120 66 0 0 0 0
+node "w_1375_27#" 4385 0 1375 27 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 448 88
+node "w_863_27#" 7696 0 863 27 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2408 228
+node "w_69_27#" 3341 0 69 27 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 588 98
+cap "fa_cin" "w_69_27#" 5012
+cap "w_863_27#" "fa_cout" 423
+cap "fa_vdd" "w_69_27#" 5922
+cap "fa_cout" "m1_858_2#" 420
+cap "m2_513_n19#" "fa_cout" 152
+cap "m1_860_48#" "w_863_27#" 23124
+cap "fa_vdd" "fa_cin" 1080
+cap "w_1375_27#" "m1_1373_46#" 6016
+subcap "fa_vdd" -564
+subcap "fa_cin" -88656
+cap "carry_0/carrycin" "carry_0/w_n16_27#" -564
+cap "carry_0/carryvdd" "carry_0/w_n16_27#" -846
+subcap "m2_513_n19#" -29412
+subcap "m1_860_48#" -846
+subcap "m1_935_64#" -40272
+subcap "fa_cout" -376
+cap "sum_0/w_n9_47#" "sum_0/sumvdd" -4512
+subcap "m1_1373_46#" -752
+cap "w_1375_27#" "sum_0/xor_1/xorvdd" -2256
+merge "sum_0/sumain" "carry_0/carrybin" -15124 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -796 -418 0 0
+merge "carry_0/carrybin" "fa_bin"
+merge "fa_bin" "m2_513_n19#"
+merge "carry_0/carrygnd" "fa_gnd" -4982 0 0 0 0 0 0 0 0 0 0 0 0 -106 -62 0 0 0 0
+merge "fa_gnd" "sum_0/sumgnd"
+merge "sum_0/sumgnd" "carry_0/or_1/nand_two_1/gnd"
+merge "carry_0/or_1/nand_two_1/gnd" "m1_858_2#"
+merge "sum_0/sumbin" "carry_0/carryain" -8542 0 0 0 0 0 0 0 0 0 0 0 0 -16 -20 -410 -214 0 0
+merge "carry_0/carryain" "fa_ain"
+merge "fa_ain" "m1_935_64#"
+merge "carry_0/carryvdd" "fa_vdd" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -784 -168
+merge "fa_vdd" "carry_0/w_n16_27#"
+merge "carry_0/w_n16_27#" "w_69_27#"
+merge "w_69_27#" "sum_0/sumvdd"
+merge "sum_0/sumvdd" "sum_0/w_n9_47#"
+merge "sum_0/w_n9_47#" "carry_0/or_1/nand_two_1/vdd"
+merge "carry_0/or_1/nand_two_1/vdd" "w_863_27#"
+merge "w_863_27#" "m1_860_48#"
+merge "m1_860_48#" "w_1375_27#"
+merge "carry_0/carryout" "carry_0/or_1/orout" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "carry_0/or_1/orout" "fa_cout"
+merge "sum_0/xor_1/xorvdd" "m1_1373_46#" -752 0 0 0 0 0 0 0 0 0 0 0 0 -64 -32 0 0 0 0
+merge "sum_0/sumcin" "carry_0/carrycin" -1316 0 0 0 0 0 0 0 0 0 0 0 0 -40 -36 0 0 0 0
+merge "carry_0/carrycin" "fa_cin"
+merge "sum_0/xor_1/xorgnd" "m1_1370_3#" -3102 0 0 0 0 0 0 0 0 0 0 0 0 -66 -34 0 0 0 0
+merge "sum_0/sumvout" "fa_sout" -1880 0 0 0 0 0 0 0 0 0 0 0 0 -40 -26 0 0 0 0

@@ -1,0 +1,254 @@
+* SPICE3 file created from clk_cra.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt transgate trans_clkp trans_vin trans_clkn trans_vout trans_vdd trans_gnd w_n16_15#
+M1000 trans_vout trans_clkn trans_vin Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 trans_vout trans_clkp trans_vin w_n16_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 w_n16_15# trans_clkp 4.53fF
+C1 trans_vdd w_n16_15# 11.52fF
+C2 trans_gnd Gnd 9.12fF
+C3 trans_clkn Gnd 7.46fF
+C4 trans_vout Gnd 3.95fF
+C5 trans_vin Gnd 4.89fF
+C6 trans_clkp Gnd 3.89fF
+.ends
+
+.subckt invertor inv_vdd inv_vin inv_vout inv_gnd
+M1000 inv_vout inv_vin inv_gnd Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 inv_vout inv_vin inv_vdd inv_vdd pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 inv_vin inv_vdd 2.15fF
+C1 inv_gnd Gnd 4.00fF
+C2 inv_vout Gnd 3.95fF
+C3 inv_vin Gnd 5.97fF
+.ends
+
+.subckt tristate tri_vin tri_vout tri_clkp tri_clkn tri_vdd tri_gnd tri_int
+Xinvertor_0 tri_vdd tri_vin tri_int tri_gnd invertor
+Xtransgate_0 tri_clkp tri_int tri_clkn tri_vout tri_vdd tri_gnd tri_vdd transgate
+C0 tri_gnd Gnd 21.62fF
+C1 tri_vout Gnd 3.38fF
+C2 tri_int Gnd 8.08fF
+.ends
+
+.subckt ff ff_clk ff_din ff_qout ff_vdd ff_gnd
+Xtransgate_1 clkn inv2_vout ff_clk try2_vout ff_vdd ff_gnd ff_vdd transgate
+Xtristate_0 inv2_vout tryst1_vout clkn ff_clk ff_vdd ff_gnd triint0 tristate
+Xtristate_1 inv3_vout try2_vout ff_clk clkn ff_vdd ff_gnd triint1 tristate
+Xinvertor_0 ff_vdd ff_clk clkn ff_gnd invertor
+Xinvertor_1 ff_vdd ff_din inv1_vout ff_gnd invertor
+Xinvertor_2 ff_vdd tryst1_vout inv2_vout ff_gnd invertor
+Xinvertor_4 ff_vdd inv3_vout ff_qout ff_gnd invertor
+Xinvertor_3 ff_vdd try2_vout inv3_vout ff_gnd invertor
+Xtransgate_0 ff_clk inv1_vout clkn tryst1_vout ff_vdd ff_gnd ff_vdd transgate
+C0 ff_vdd ff_clk 2.55fF
+C1 ff_vdd ff_din 16.97fF
+C2 clkn ff_clk 2.88fF
+C3 ff_vdd tryst1_vout 24.33fF
+C4 ff_vdd try2_vout 26.11fF
+C5 clkn ff_vdd 3.42fF
+C6 inv2_vout ff_gnd 18.18fF
+C7 clkn ff_gnd 2.16fF
+C8 inv3_vout ff_gnd 19.80fF
+C9 inv1_vout Gnd 3.20fF
+C10 ff_clk Gnd 12.45fF
+C11 ff_qout Gnd 4.51fF
+C12 ff_din Gnd 3.26fF
+C13 ff_gnd Gnd 27.82fF
+C14 try2_vout Gnd 2.82fF
+C15 triint1 Gnd 8.08fF
+C16 inv3_vout Gnd 11.19fF
+C17 tryst1_vout Gnd 8.16fF
+C18 clkn Gnd 6.93fF
+C19 triint0 Gnd 4.14fF
+C20 inv2_vout Gnd 11.65fF
+.ends
+
+.subckt nand_two out inA inB gnd vdd
+M1000 vdd inB out vdd pfet w=8 l=2
++  ad=112 pd=60 as=80 ps=36
+M1001 out inB a_n10_n7# Gnd nfet w=8 l=2
++  ad=56 pd=30 as=80 ps=36
+M1002 out inA vdd vdd pfet w=8 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_n10_n7# inA gnd Gnd nfet w=8 l=2
++  ad=0 pd=0 as=56 ps=30
+C0 vdd inA 3.34fF
+C1 vdd inB 4.60fF
+C2 gnd Gnd 7.52fF
+C3 out Gnd 4.14fF
+C4 inB Gnd 3.10fF
+C5 inA Gnd 4.36fF
+.ends
+
+.subckt or orain orbin orout orvdd orgnd
+Xnand_two_0 nand0out orain orain orgnd orvdd nand_two
+Xnand_two_2 orout nand1out nand0out orgnd orvdd nand_two
+Xnand_two_1 nand1out orbin orbin orgnd orvdd nand_two
+C0 orbin orvdd 4.21fF
+C1 orain Gnd 13.59fF
+C2 orgnd Gnd 28.29fF
+C3 nand1out Gnd 7.61fF
+C4 orbin Gnd 23.22fF
+C5 orout Gnd 2.44fF
+C6 nand0out Gnd 17.42fF
+.ends
+
+.subckt and anda andb andvout andvdd andgnd
+Xnand_two_0 nandout anda andb andgnd andvdd nand_two
+Xnand_two_1 andvout nandout nandout andgnd andvdd nand_two
+C0 andvdd andb 2.46fF
+C1 andvdd nandout 2.06fF
+C2 nandout Gnd 7.88fF
+C3 andgnd Gnd 29.52fF
+C4 andb Gnd 8.66fF
+C5 anda Gnd 5.83fF
+C6 andvdd Gnd 4.51fF
+.ends
+
+.subckt carry carryain carrybin carrycin carryout carryvdd carrygnd
+Xor_0 and1out and0out or0out carryvdd carrygnd or
+Xor_1 and2out or0out carryout carryvdd carrygnd or
+Xand_0 carryain carrycin and0out carryvdd carrygnd and
+Xand_1 carrybin carrycin and1out carryvdd carrygnd and
+Xand_2 carrybin carryain and2out carryvdd carrygnd and
+C0 carryain carryvdd 10.71fF
+C1 carryvdd and0out 2.75fF
+C2 carrycin carryvdd 19.54fF
+C3 carrygnd carrybin 2.52fF
+C4 carryvdd or0out 3.42fF
+C5 carrybin Gnd 4.64fF
+C6 carrygnd Gnd 30.27fF
+C7 carrycin Gnd 22.93fF
+C8 carryain Gnd 13.21fF
+C9 and2out Gnd 15.13fF
+C10 or0out Gnd 11.41fF
+C11 carryout Gnd 3.76fF
+C12 and1out Gnd 11.00fF
+C13 and0out Gnd 5.72fF
+.ends
+
+.subckt xor xora xorb xorvout xorvdd xorgnd
+Xtransgate_1 invbout invaout xorb xorvout xorvdd xorgnd xorvdd transgate
+Xinvertor_0 xorvdd xorb invbout xorgnd invertor
+Xinvertor_1 xorvdd xora invaout xorgnd invertor
+Xtransgate_0 xorb xora invbout xorvout xorvdd xorgnd xorvdd transgate
+C0 xorb xorvdd 3.47fF
+C1 xorvdd invbout 3.02fF
+C2 xorvdd xorvout 5.92fF
+C3 xora xorgnd 2.16fF
+C4 xorb Gnd 42.92fF
+C5 xora Gnd 11.23fF
+C6 invaout Gnd 6.20fF
+C7 xorgnd Gnd 24.44fF
+C8 invbout Gnd 16.76fF
+C9 xorvdd Gnd 4.89fF
+C10 xorvout Gnd 21.02fF
+.ends
+
+.subckt sum sumain sumbin sumcin sumvout sumvdd sumgnd
+Xxor_0 sumain sumbin xor1out sumvdd sumgnd xor
+Xxor_1 xor1out sumcin sumvout sumvdd sumgnd xor
+C0 sumcin Gnd 2.44fF
+C1 sumvout Gnd 3.29fF
+C2 sumbin Gnd 3.20fF
+C3 sumain Gnd 3.20fF
+C4 sumgnd Gnd 33.56fF
+C5 xor1out Gnd 6.61fF
+.ends
+
+.subckt fa fa_ain fa_bin fa_cin fa_sout fa_cout fa_vdd fa_gnd
+Xcarry_0 fa_ain fa_bin fa_cin fa_cout fa_vdd fa_gnd carry
+Xsum_0 fa_bin fa_ain fa_cin fa_sout fa_vdd fa_gnd sum
+C0 fa_cin fa_vdd 5.53fF
+C1 fa_sout Gnd 4.23fF
+C2 fa_bin Gnd 8.73fF
+C3 fa_gnd Gnd 38.49fF
+C4 fa_ain Gnd 9.59fF
+C5 fa_cout Gnd 18.80fF
+.ends
+
+.subckt ripple fa_four_vdd fa_four_gnd ri_c0 ri_a0 ri_b0 ri_sout0 ri_a1 ri_b1 ri_sout1
++ ri_a2 ri_b2 ri_sout2 ri_a3 ri_b3 ri_sout3 ri_cout
+Xfa_0 ri_a0 ri_b0 ri_c0 ri_sout0 ri_c1 fa_four_vdd fa_four_gnd fa
+Xfa_1 ri_a1 ri_b1 ri_c1 ri_sout1 ri_c2 fa_four_vdd fa_four_gnd fa
+Xfa_2 ri_a2 ri_b2 ri_c2 ri_sout2 ri_c3 fa_four_vdd fa_four_gnd fa
+Xfa_3 ri_a3 ri_b3 ri_c3 ri_sout3 ri_cout fa_four_vdd fa_four_gnd fa
+C0 ri_sout3 Gnd 11.98fF
+C1 ri_b3 Gnd 8.65fF
+C2 ri_c3 Gnd 30.46fF
+C3 ri_a3 Gnd 5.83fF
+C4 ri_cout Gnd 2.82fF
+C5 ri_sout2 Gnd 10.34fF
+C6 ri_b2 Gnd 6.02fF
+C7 ri_c2 Gnd 28.76fF
+C8 ri_a2 Gnd 5.45fF
+C9 ri_sout1 Gnd 12.22fF
+C10 ri_b1 Gnd 3.76fF
+C11 ri_c1 Gnd 26.13fF
+C12 ri_a1 Gnd 2.07fF
+C13 fa_four_vdd Gnd 14.95fF
+C14 ri_sout0 Gnd 15.28fF
+C15 ri_b0 Gnd 7.33fF
+C16 fa_four_gnd Gnd 394.89fF
+C17 ri_c0 Gnd 5.45fF
+C18 ri_a0 Gnd 6.02fF
+.ends
+
+
+* Top level circuit clk_cra
+
+Xff_7 clk in_b2 ff_b2 ff_7/ff_vdd gnd ff
+Xff_8 clk ff_8/ff_din ff_a3 vdd gnd ff
+Xripple_0 vdd gnd ffc0 ffa0 ffb0 ff_ins0 ff_a1 ff_b1 ff_ins1 ff_a2 ff_b2 ff_ins2 ff_a3
++ ff_b3 ff_ins3 ff_incout ripple
+Xff_9 clk in_b3 ff_b3 vdd gnd ff
+Xff_10 clk ff_ins1 out_s1 vdd gnd ff
+Xff_11 clk ff_ins2 out_s2 vdd gnd ff
+Xff_12 clk ff_ins3 out_s3 vdd gnd ff
+Xff_13 clk ff_incout out_cout ff_13/ff_vdd gnd ff
+Xff_0 clk in_a0 ffa0 vdd gnd ff
+Xff_1 clk in_b0 ffb0 vdd gnd ff
+Xff_2 clk in_cin ffc0 vdd gnd ff
+Xff_4 clk in_a1 ff_a1 ff_4/ff_vdd gnd ff
+Xff_3 clk ff_ins0 out_s0 vdd gnd ff
+Xff_5 clk in_b1 ff_b1 ff_5/ff_vdd gnd ff
+Xff_6 clk in_a2 ff_a2 ff_6/ff_vdd gnd ff
+C0 gnd vdd 6.75fF
+C1 ffc0 vdd 3.19fF
+C2 in_a2 Gnd 2.07fF
+C3 ff_4/ff_vdd Gnd 13.16fF
+C4 out_s0 Gnd 2.82fF
+C5 in_a1 Gnd 3.01fF
+C6 out_cout Gnd 2.26fF
+C7 out_s3 Gnd 4.51fF
+C8 out_s2 Gnd 2.07fF
+C9 out_s1 Gnd 3.52fF
+C10 clk Gnd 5669.33fF
+C11 in_b3 Gnd 2.07fF
+C12 ff_ins3 Gnd 14.85fF
+C13 ff_b3 Gnd 8.05fF
+C14 ff_a3 Gnd 9.96fF
+C15 ff_incout Gnd 17.77fF
+C16 ff_ins2 Gnd 15.71fF
+C17 ff_b2 Gnd 10.30fF
+C18 ff_a2 Gnd 13.73fF
+C19 ff_ins1 Gnd 3.68fF
+C20 ff_b1 Gnd 7.60fF
+C21 ff_a1 Gnd 12.58fF
+C22 vdd Gnd 22.15fF
+C23 ff_ins0 Gnd 13.39fF
+C24 ffb0 Gnd 6.02fF
+C25 gnd Gnd 246.76fF
+C26 ffc0 Gnd 4.98fF
+C27 ffa0 Gnd 4.98fF
+C28 in_b2 Gnd 7.05fF
+C29 ff_6/ff_vdd Gnd 10.20fF
+.end
+

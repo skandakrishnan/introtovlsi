@@ -1,0 +1,53 @@
+timestamp 1701908128
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use xor xor_0 1 0 67 0 1 23
+use xor xor_1 1 0 298 0 1 23
+port "sumgnd" 6 -9 26 -9 26 m1
+port "sumvout" 4 441 43 441 43 m1
+port "sumain" 1 -9 44 -9 44 m1
+port "sumvdd" 5 -9 70 -9 70 m1
+port "sumcin" 3 233 97 233 97 m1
+port "sumbin" 2 -9 86 -9 86 m1
+node "m1_424_23#" 0 4794 424 23 m1 0 0 0 0 0 0 0 0 0 0 0 0 102 46 0 0 0 0
+node "m1_160_23#" 1 23406 160 23 m1 0 0 0 0 0 0 0 0 0 0 0 0 498 178 0 0 0 0
+node "sumgnd" 0 5358 -9 26 m1 0 0 0 0 0 0 0 0 0 0 0 0 114 50 0 0 0 0
+node "sumvout" 0 3290 441 43 m1 0 0 0 0 0 0 0 0 0 0 0 0 70 38 0 0 0 0
+node "xor1out" 1 13630 189 41 m1 0 0 0 0 0 0 0 0 0 0 0 0 290 126 0 0 0 0
+node "sumain" 0 3196 -9 44 m1 0 0 0 0 0 0 0 0 0 0 0 0 68 42 0 0 0 0
+node "m1_425_66#" 0 0 425 66 m1 0 0 0 0 0 0 0 0 0 0 0 0 128 48 0 0 0 0
+node "m1_187_66#" 0 0 187 66 m1 0 0 0 0 0 0 0 0 0 0 0 0 432 124 0 0 0 0
+node "sumvdd" 0 0 -9 70 m1 0 0 0 0 0 0 0 0 0 0 0 0 128 48 0 0 0 0
+node "sumcin" 0 2444 233 97 m1 0 0 0 0 0 0 0 0 0 0 0 0 52 34 0 0 0 0
+node "sumbin" 0 3196 -9 86 m1 0 0 0 0 0 0 0 0 0 0 0 0 68 42 0 0 0 0
+node "w_n9_47#" 40272 0 -9 47 nw 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12600 956
+cap "w_n9_47#" "sumvdd" 6016
+cap "w_n9_47#" "m1_425_66#" 6016
+cap "w_n9_47#" "m1_187_66#" 20304
+subcap "xor1out" -7021
+cap "xor_0/xorvdd" "xor_1/w_n54_24#" -2632
+cap "w_n9_47#" "xor_1/xorvdd" -2632
+merge "xor_1/xorb" "sumcin" -752 0 0 0 0 0 0 0 0 0 0 0 0 -16 -16 0 0 0 0
+merge "xor_1/xorvout" "sumvout" -1175 0 0 0 0 0 0 0 0 0 0 0 0 -25 -20 0 0 0 0
+merge "xor_1/xorgnd" "xor_0/xorgnd" -1974 0 0 0 0 0 0 0 0 0 0 0 0 -42 -26 0 0 0 0
+merge "xor_0/xorgnd" "sumgnd"
+merge "sumgnd" "xor_0/invertor_1/inv_gnd"
+merge "xor_0/invertor_1/inv_gnd" "m1_160_23#"
+merge "m1_160_23#" "m1_424_23#"
+merge "xor_1/invertor_0/inv_vdd" "xor_1/xorvdd" 0 0 0 0 0 0 0 0 0 0 0 0 0 -56 -30 0 0 -2548 -238
+merge "xor_1/xorvdd" "xor_1/w_n54_24#"
+merge "xor_1/w_n54_24#" "xor_0/w_n54_24#"
+merge "xor_0/w_n54_24#" "xor_0/invertor_1/inv_vdd"
+merge "xor_0/invertor_1/inv_vdd" "xor_0/xorvdd"
+merge "xor_0/xorvdd" "w_n9_47#"
+merge "w_n9_47#" "sumvdd"
+merge "sumvdd" "m1_187_66#"
+merge "m1_187_66#" "m1_425_66#"
+merge "xor_0/xora" "sumain" -1316 0 0 0 0 0 0 0 0 0 0 0 0 -28 -22 0 0 0 0
+merge "xor_1/xora" "xor_0/xorvout" -5640 0 0 0 0 0 0 0 0 0 0 0 0 -120 -72 0 0 0 0
+merge "xor_0/xorvout" "xor_0/transgate_1/trans_vout"
+merge "xor_0/transgate_1/trans_vout" "xor1out"
+merge "xor_0/xorb" "sumbin" -1504 0 0 0 0 0 0 0 0 0 0 0 0 -32 -24 0 0 0 0

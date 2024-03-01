@@ -1,0 +1,40 @@
+magic
+tech scmos
+timestamp 1701908128
+<< nwell >>
+rect -9 47 441 75
+<< metal1 >>
+rect -9 84 8 88
+rect 231 84 235 97
+rect -9 66 7 74
+rect 187 66 241 74
+rect 425 66 441 74
+rect -9 42 8 46
+rect 189 41 247 46
+rect 427 41 441 46
+rect -9 23 10 29
+rect 160 23 243 29
+rect 424 23 441 29
+use xor  xor_1
+timestamp 1701904826
+transform 1 0 298 0 1 23
+box -67 -23 134 76
+use xor  xor_0
+timestamp 1701904826
+transform 1 0 67 0 1 23
+box -67 -23 134 76
+<< labels >>
+rlabel metal1 -9 44 -9 44 3 sumain
+port 1 e
+rlabel metal1 -9 26 -9 26 3 sumgnd
+port 6 e
+rlabel metal1 -9 86 -9 86 3 sumbin
+port 2 e
+rlabel metal1 221 43 221 43 1 xor1out
+rlabel metal1 233 97 233 97 5 sumcin
+port 3 s
+rlabel metal1 441 43 441 43 7 sumvout
+port 4 w
+rlabel metal1 -9 70 -9 70 3 sumvdd
+port 5 e
+<< end >>

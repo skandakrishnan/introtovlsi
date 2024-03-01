@@ -1,0 +1,38 @@
+magic
+tech scmos
+timestamp 1701906181
+<< polysilicon >>
+rect -8 60 27 62
+rect -8 31 -6 60
+rect 25 42 27 60
+rect 55 33 69 35
+<< metal1 >>
+rect -18 48 88 54
+rect -18 31 -12 35
+rect -18 21 13 25
+rect 36 21 51 27
+rect 81 23 89 27
+rect -18 0 90 7
+<< polycontact >>
+rect -12 31 -8 35
+use nand_two  nand_two_1
+timestamp 1698975745
+transform 1 0 67 0 1 17
+box -25 -17 17 38
+use nand_two  nand_two_0
+timestamp 1698975745
+transform 1 0 25 0 1 17
+box -25 -17 17 38
+<< labels >>
+rlabel metal1 -18 51 -18 51 3 andvdd
+port 4 e
+rlabel metal1 -18 33 -18 33 3 andb
+port 2 e
+rlabel metal1 -18 23 -18 23 3 anda
+port 1 e
+rlabel metal1 -18 3 -18 3 2 andgnd
+port 5 ne
+rlabel metal1 89 25 89 25 7 andvout
+port 3 w
+rlabel metal1 42 24 42 24 1 nandout
+<< end >>

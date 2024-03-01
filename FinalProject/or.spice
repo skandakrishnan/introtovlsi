@@ -1,0 +1,36 @@
+* SPICE3 file created from or.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt nand_two out inA inB gnd vdd
+M1000 vdd inB out vdd pfet w=8 l=2
++  ad=112 pd=60 as=80 ps=36
+M1001 out inB a_n10_n7# Gnd nfet w=8 l=2
++  ad=56 pd=30 as=80 ps=36
+M1002 out inA vdd vdd pfet w=8 l=2
++  ad=0 pd=0 as=0 ps=0
+M1003 a_n10_n7# inA gnd Gnd nfet w=8 l=2
++  ad=0 pd=0 as=56 ps=30
+C0 vdd inA 3.34fF
+C1 vdd inB 4.60fF
+C2 gnd Gnd 7.52fF
+C3 out Gnd 4.14fF
+C4 inB Gnd 3.10fF
+C5 inA Gnd 4.36fF
+.ends
+
+.subckt or orain orbin orout orvdd orgnd
+Xnand_two_0 nand0out orain orain orgnd orvdd nand_two
+Xnand_two_1 nand1out orbin orbin orgnd orvdd nand_two
+Xnand_two_2 orout nand1out nand0out orgnd orvdd nand_two
+C0 orvdd orbin 4.21fF
+C1 orout Gnd 2.44fF
+C2 nand0out Gnd 17.42fF
+C3 orgnd Gnd 28.29fF
+C4 nand1out Gnd 7.61fF
+C5 orbin Gnd 23.22fF
+C6 orain Gnd 13.59fF
+.ends
+
