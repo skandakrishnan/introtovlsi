@@ -1,0 +1,23 @@
+*DES2_1b
+.include bsim.lib
+
+.param alpha = 4
+
+VDD vd 0 DC 1.8
+VG vin 0 pulse(0 1.8 10p 10p 10p 180p 400p)
+Cload vout 0 15F
+
+M1 vout vin 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M2 vout vin vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+.tran 1p 1000p
+
+.measure tran tphl trig v(vin) val=0.9 rise=1 targ v(vout) val=0.9 fall=1
+.measure tran tplh trig v(vin) val=0.9 fall=1 targ v(vout) val=0.9 rise=1
+
+.control
+run
+plot vout vin
+.endc
+
+.end

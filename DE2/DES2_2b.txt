@@ -1,0 +1,20 @@
+
+.include bsim.lib
+
+Vdd Vcc 0 dc 1.8
+V1 A 0 dc 1.8
+V2 B 0 dc 0
+
+M1 vout A Vcc Vcc BSIM3_180nm_P w=0.72u l=0.18u
+M2 vout B Vcc Vcc BSIM3_180nm_P w=0.72u l=0.18u
+
+M3 vout A 2 2 BSIM3_180nm_N w=0.72u l=0.18u
+M4 2 B 0 0 BSIM3_180nm_N w=0.72u l=0.18u
+
+Cl vout 0 15f 
+.tran 1p 5000p
+.control
+Run
+Plot A B vout
+.endc
+.end

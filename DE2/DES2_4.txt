@@ -1,0 +1,22 @@
+.include bsim.lib
+
+Vdd Vcc 0 dc 1.8
+
+VG1 A 0 pulse(1.8 0 10p 10p 10p 300p 600p)
+VG2 B 0 pulse(0 1.8 10p 10p 10p 600p 1200p)
+
+M1 vout A Vcc Vcc BSIM3_180nm_P w=0.72u l=0.18u
+M2 vout B Vcc Vcc BSIM3_180nm_P w=0.72u l=0.18u
+
+M3 vout A 2 2 BSIM3_180nm_N w=0.72u l=0.18u
+M4 2 B 0 0 BSIM3_180nm_N w=0.72u l=0.18u
+
+.measure tran tphl trig v(A) val=0.9 rise=3 targ v(vout) val=0.9 fall=2
+
+Cl vout 0 15f 
+.tran 1p 3000p
+.control
+Run
+Plot A B vout
+.endc
+.end
