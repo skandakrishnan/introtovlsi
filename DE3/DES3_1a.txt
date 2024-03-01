@@ -1,0 +1,25 @@
+
+.include bsim.lib
+.param alpha = 2
+vdd vd 0 DC 3
+*vin 2 0 DC 0
+ 
+M1 vo1 v 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M2 vo1 v vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M3 vo2 vo1 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M4 vo2 vo1 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M5 v vo2 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M6 v vo2 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+.tran 1p 2000p
+
+.control
+run
+plot v
+.endc
+.end
+
+
+
