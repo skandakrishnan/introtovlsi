@@ -1,0 +1,48 @@
+.include MagicNames.txt
+
+.option scale=0.09u
+
+
+
+VDD vcc 0 DC 1.8
+
+
+
+.global Vdd Gnd 
+
+.subckt invertor a_n1_0# a_6_0# w_n6_15# a_0_10#
+M1000 a_6_0# a_0_10# a_n1_0# Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 a_6_0# a_0_10# w_n6_15# w_n6_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+.ends
+
+
+* Top level circuit 11RO_try2
+
+Xinvertor_10 gnd vout vcc invertor_9/a_6_0# invertor
+Xinvertor_0 gnd invertor_0/a_6_0# vcc vout invertor
+Xinvertor_1 gnd invertor_1/a_6_0# vcc invertor_0/a_6_0# invertor
+Xinvertor_2 gnd invertor_2/a_6_0# vcc invertor_1/a_6_0# invertor
+Xinvertor_4 gnd invertor_4/a_6_0# vcc invertor_3/a_6_0# invertor
+Xinvertor_3 gnd invertor_3/a_6_0# vcc invertor_2/a_6_0# invertor
+Xinvertor_5 gnd invertor_5/a_6_0# vcc invertor_4/a_6_0# invertor
+Xinvertor_6 gnd invertor_6/a_6_0# vcc invertor_5/a_6_0# invertor
+Xinvertor_7 gnd invertor_7/a_6_0# vcc invertor_6/a_6_0# invertor
+Xinvertor_8 gnd invertor_8/a_6_0# vcc invertor_7/a_6_0# invertor
+Xinvertor_9 gnd invertor_9/a_6_0# vcc invertor_8/a_6_0# invertor
+
+
+.tran 10p 8n
+
+.measure tran i_int INTEG i(VDD) from=3n to=3.955n
+.measure tran period trig v(vout) val=0.9 fall=3 targ v(vout) val=0.9 fall=4
+.measure tran frequency param = '1/(period)'
+.measure tran power param = '-1*(i_int*1.8)/(period)'
+
+.control
+run
+set xbrushwidth = 2
+plot vout
+.endc
+.end

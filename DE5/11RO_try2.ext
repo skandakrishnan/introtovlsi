@@ -1,0 +1,74 @@
+timestamp 1698986016
+version 8.3
+tech scmos
+style lambda=1.0(scna20_orb)
+scale 1000 1 100
+resistclasses 26670 59550 23860 19690 27260 2000000 49 26 2505830
+use invertor invertor_0 1 0 -11 0 1 21
+use invertor invertor_1 1 0 16 0 1 21
+use invertor invertor_2 1 0 43 0 1 21
+use invertor invertor_3 1 0 70 0 1 21
+use invertor invertor_4 1 0 97 0 1 21
+use invertor invertor_5 1 0 124 0 1 21
+use invertor invertor_6 1 0 151 0 1 21
+use invertor invertor_7 1 0 178 0 1 21
+use invertor invertor_8 1 0 205 0 1 21
+use invertor invertor_9 1 0 232 0 1 21
+use invertor invertor_10 1 0 259 0 1 21
+node "gnd" 2 23020 6 13 v 0 0 0 0 0 0 0 0 0 0 0 0 16 16 1188 602 0 0
+node "vout" 2 24076 -21 31 v 0 0 0 0 0 0 0 0 0 0 0 0 32 32 1220 618 0 0
+node "vcc" 2 23020 -12 57 v 0 0 0 0 0 0 0 0 0 0 0 0 16 16 1188 602 0 0
+subcap "vcc" -23020
+cap "invertor_2/a_6_0#" "invertor_0/a_0_10#" 4472
+cap "invertor_0/a_6_0#" "invertor_0/a_0_10#" 4472
+cap "invertor_3/a_6_0#" "invertor_0/a_0_10#" 360
+cap "invertor_1/a_6_0#" "invertor_0/a_0_10#" 4472
+cap "vcc" "invertor_4/w_n6_15#" 18000
+cap "gnd" "invertor_4/a_n1_0#" 18000
+cap "vout" "invertor_5/a_6_0#" 4472
+cap "invertor_3/a_6_0#" "vout" 4112
+cap "vout" "invertor_6/a_6_0#" 3780
+cap "vout" "invertor_4/a_6_0#" 4472
+cap "vcc" "invertor_8/w_n6_15#" 18000
+cap "vout" "invertor_8/a_6_0#" 4472
+cap "vout" "invertor_10/a_6_0#" 2340
+cap "vout" "invertor_7/a_6_0#" 4472
+cap "vout" "invertor_7/a_0_10#" 692
+cap "vout" "invertor_9/a_6_0#" 4472
+cap "invertor_8/a_n1_0#" "gnd" 18000
+cap "gnd" "invertor_10/a_n1_0#" 180
+cap "invertor_10/w_n6_15#" "vcc" 180
+merge "invertor_7/a_0_10#" "invertor_6/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_3/a_0_10#" "invertor_2/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_10/w_n6_15#" "invertor_9/w_n6_15#" -23020 0 0 0 0 0 0 0 0 0 0 0 0 -16 -156 -804 -406 0 -560
+merge "invertor_9/w_n6_15#" "invertor_8/w_n6_15#"
+merge "invertor_8/w_n6_15#" "invertor_7/w_n6_15#"
+merge "invertor_7/w_n6_15#" "invertor_6/w_n6_15#"
+merge "invertor_6/w_n6_15#" "invertor_5/w_n6_15#"
+merge "invertor_5/w_n6_15#" "invertor_4/w_n6_15#"
+merge "invertor_4/w_n6_15#" "invertor_3/w_n6_15#"
+merge "invertor_3/w_n6_15#" "invertor_2/w_n6_15#"
+merge "invertor_2/w_n6_15#" "invertor_1/w_n6_15#"
+merge "invertor_1/w_n6_15#" "invertor_0/w_n6_15#"
+merge "invertor_0/w_n6_15#" "vcc"
+merge "invertor_5/a_0_10#" "invertor_4/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_10/a_n1_0#" "invertor_9/a_n1_0#" -23020 0 0 0 0 0 0 0 0 0 0 0 0 -16 -136 -804 -406 0 0
+merge "invertor_9/a_n1_0#" "invertor_8/a_n1_0#"
+merge "invertor_8/a_n1_0#" "invertor_7/a_n1_0#"
+merge "invertor_7/a_n1_0#" "invertor_6/a_n1_0#"
+merge "invertor_6/a_n1_0#" "invertor_5/a_n1_0#"
+merge "invertor_5/a_n1_0#" "invertor_4/a_n1_0#"
+merge "invertor_4/a_n1_0#" "invertor_3/a_n1_0#"
+merge "invertor_3/a_n1_0#" "invertor_2/a_n1_0#"
+merge "invertor_2/a_n1_0#" "invertor_1/a_n1_0#"
+merge "invertor_1/a_n1_0#" "invertor_0/a_n1_0#"
+merge "invertor_0/a_n1_0#" "gnd"
+merge "invertor_6/a_0_10#" "invertor_5/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_2/a_0_10#" "invertor_1/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_1/a_0_10#" "invertor_0/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_9/a_0_10#" "invertor_8/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_10/a_6_0#" "invertor_0/a_0_10#" -22644 0 0 0 0 0 0 0 0 0 0 0 0 -8 -20 -812 -410 0 0
+merge "invertor_0/a_0_10#" "vout"
+merge "invertor_8/a_0_10#" "invertor_7/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_10/a_0_10#" "invertor_9/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0
+merge "invertor_4/a_0_10#" "invertor_3/a_6_0#" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -8 0 0 0 0

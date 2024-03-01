@@ -1,0 +1,55 @@
+
+.include bsim.lib
+.param alpha = 1
+vdd vd 0 DC 1.8
+
+
+M1 vo1 v 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M2 vo1 v vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M3 vo2 vo1 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M4 vo2 vo1 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M5 vo3 vo2 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M6 vo3 vo2 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M7 vo4 vo3 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M8 vo4 vo3 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M9 vo5 vo4 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M10 vo5 vo4 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M11 vo6 vo5 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M12 vo6 vo5 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M13 vo7 vo6 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M14 vo7 vo6 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M15 vo8 vo7 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M16 vo8 vo7 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M17 vo9 vo8 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M18 vo9 vo8 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M19 vo10 vo9 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M20 vo10 vo9 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+M21 v vo10 0 0 BSIM3_180nm_N W = '0.36u*alpha' L = 0.18u
+M22 v vo10 vd vd BSIM3_180nm_P W = '0.72u*alpha' L = 0.18u
+
+
+.tran 1p 4000p
+
+.measure tran i_int INTEG i(vdd) from=1500p to=1935p
+.measure tran period trig v(v) val=0.9 fall=5 targ v(v) val=0.9 fall=6
+
+.measure tran frequency param = '1/(period)'
+
+.measure tran power param = '-1*(i_int*1.8)/(period)'
+
+.control
+run
+plot v
+plot i(vdd)
+.endc
+.end

@@ -1,0 +1,45 @@
+* SPICE3 file created from 11RO_try2.ext - technology: scmos
+
+.option scale=1u
+
+.global Vdd Gnd 
+
+.subckt invertor a_n1_0# a_6_0# w_n6_15# a_0_10#
+M1000 a_6_0# a_0_10# a_n1_0# Gnd nfet w=4 l=2
++  ad=20 pd=18 as=20 ps=18
+M1001 a_6_0# a_0_10# w_n6_15# w_n6_15# pfet w=8 l=2
++  ad=40 pd=26 as=40 ps=26
+C0 w_n6_15# a_0_10# 2.15fF
+C1 a_n1_0# Gnd 7.43fF
+C2 a_6_0# Gnd 3.95fF
+C3 a_0_10# Gnd 5.97fF
+.ends
+
+
+* Top level circuit 11RO_try2
+
+Xinvertor_10 gnd vout vcc invertor_9/a_6_0# invertor
+Xinvertor_0 gnd invertor_0/a_6_0# vcc vout invertor
+Xinvertor_1 gnd invertor_1/a_6_0# vcc invertor_0/a_6_0# invertor
+Xinvertor_2 gnd invertor_2/a_6_0# vcc invertor_1/a_6_0# invertor
+Xinvertor_4 gnd invertor_4/a_6_0# vcc invertor_3/a_6_0# invertor
+Xinvertor_3 gnd invertor_3/a_6_0# vcc invertor_2/a_6_0# invertor
+Xinvertor_5 gnd invertor_5/a_6_0# vcc invertor_4/a_6_0# invertor
+Xinvertor_6 gnd invertor_6/a_6_0# vcc invertor_5/a_6_0# invertor
+Xinvertor_7 gnd invertor_7/a_6_0# vcc invertor_6/a_6_0# invertor
+Xinvertor_8 gnd invertor_8/a_6_0# vcc invertor_7/a_6_0# invertor
+Xinvertor_9 gnd invertor_9/a_6_0# vcc invertor_8/a_6_0# invertor
+C0 invertor_1/a_6_0# vout 4.47fF
+C1 vout invertor_0/a_6_0# 4.47fF
+C2 vout invertor_9/a_6_0# 4.47fF
+C3 vout invertor_7/a_6_0# 4.47fF
+C4 vout invertor_4/a_6_0# 4.47fF
+C5 vout invertor_6/a_6_0# 4.47fF
+C6 vout invertor_2/a_6_0# 4.47fF
+C7 vout invertor_5/a_6_0# 4.47fF
+C8 invertor_3/a_6_0# vout 4.47fF
+C9 vout invertor_8/a_6_0# 4.47fF
+C10 gnd Gnd 23.02fF
+C11 vout Gnd 24.08fF
+.end
+
