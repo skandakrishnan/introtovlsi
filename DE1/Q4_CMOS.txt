@@ -1,0 +1,16 @@
+
+.include bsim.lib
+vdd 3 0 DC 1.8
+vin 2 0 DC 0
+M1 1 2 3 3 BSIM3_180nm_P W=0.8u L=0.18u
+M2 1 2 0 0 BSIM3_180nm_N W=0.36u L=0.18u
+.dc vin 0 1.8 0.05 
+*vdd 0 1.8 0.6
+.control
+run
+plot v(1)
+.endc
+.end
+
+
+

@@ -1,0 +1,14 @@
+*Q3_PMOS
+.include bsim.lib
+VDD vd 0 DC -1.8
+RD vd vout 1k
+VG vin 0 DC -1.8
+M1 vout vin 0 0 BSIM3_180nm_P W=0.8u L=0.18u
+.dc VDD -1.8 0 0.3 VG -1.8 0 0.3 
+.control
+run
+plot -VDD#BRANCH
+.endc
+.end
+
+
